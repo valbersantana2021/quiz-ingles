@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>English em Jogo</title>
+<meta name="description" content="Quiz de Inglês do 6º ano: Present Continuous, Simple Present, Genitive Case e leitura de textos. Descubra seu título!">
+<meta property="og:type" content="website">
+<meta property="og:title" content="English em Jogo: qual é o seu título?">
+<meta property="og:description" content="20 questões de Inglês no modelo da prova, explicação a cada resposta. Faça o quiz e desafie a turma.">
+<meta name="theme-color" content="#FF7A1A">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@500&display=swap">
+<style>
+/* Layout: cartaz risográfico em coluna única (máx. 760px). Duas tintas (rosa + azul) com desencontro de impressão,
+   amarelo como marca-texto, papel granulado. Tudo que é clicável tem sombra dura de carimbo. */
+:root{
+  --paper:#ECEEE8; --paper-2:#DFE2DA; --ink:#1A1D33; --muted:#565B74;
+  --accent:#FF7A1A; --blue:#0078BF; --yellow:#FFE800; --ok:#00A95C; --bad:#F15060;
+  --on:#14151C; --card:#F7F8F4; --grain-op:.22;
+  --f-display:"Bagel Fat One","Arial Black",Impact,sans-serif;
+  --f-body:"Atkinson Hyperlegible",ui-sans-serif,system-ui,sans-serif;
+  --f-mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:14px; --shadow:5px 5px 0 var(--ink);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#13141B; --paper-2:#1D1F2A; --ink:#F0F0EA; --muted:#A4A8BC;
+  --accent:#FF9A4D; --blue:#46ABF5; --yellow:#FFE45C; --ok:#3DDC84; --bad:#FF6B78;
+  --card:#1A1C26; --grain-op:.10; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#13141B; --paper-2:#1D1F2A; --ink:#F0F0EA; --muted:#A4A8BC;
+  --accent:#FF9A4D; --blue:#46ABF5; --yellow:#FFE45C; --ok:#3DDC84; --bad:#FF6B78;
+  --card:#1A1C26; --grain-op:.10; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{background:var(--paper)}
+body{margin:0;min-height:100vh;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 56px;position:relative;overflow-x:hidden}
+/* granulação do papel */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:var(--grain-op);mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* manchas de tinta ao fundo */
+.blob{position:fixed;z-index:0;border-radius:50%;filter:blur(2px);opacity:.16;pointer-events:none}
+.blob.a{width:420px;height:420px;background:radial-gradient(circle,var(--accent) 0 1.6px,transparent 2px) 0 0/10px 10px;top:-120px;right:-140px}
+.blob.b{width:360px;height:360px;background:radial-gradient(circle,var(--blue) 0 1.6px,transparent 2px) 0 0/10px 10px;bottom:-140px;left:-140px}
+
+.wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;display:grid;gap:28px}
+p{margin:0}
+h1,h2{margin:0;font-family:var(--f-display);font-weight:400;text-wrap:balance;line-height:.95}
+.label{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px dashed var(--blue);outline-offset:3px}
+
+/* impressão desencontrada (assinatura visual) */
+.riso{color:var(--blue);text-shadow:.06em .045em 0 var(--accent)}
+@supports (mix-blend-mode:multiply){:root:not([data-theme="dark"]) .riso{mix-blend-mode:multiply}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .riso{mix-blend-mode:normal}}
+
+/* ===== Início ===== */
+.hero{display:grid;gap:18px;position:relative;padding-top:8px}
+.hero h1{font-size:clamp(3.1rem,13vw,6.6rem);letter-spacing:-.01em}
+.hero h1 span{display:block}
+.hero h1 .l2{margin-left:clamp(0px,8vw,80px)}
+.sticker{position:absolute;top:0;right:4px;transform:rotate(9deg);background:var(--yellow);color:var(--on);font-family:var(--f-display);font-size:1.05rem;line-height:1;
+  padding:14px 12px;border-radius:50%;width:96px;height:96px;display:grid;place-items:center;text-align:center;border:2.5px solid var(--on);box-shadow:4px 4px 0 var(--on)}
+.lede{max-width:52ch;font-size:1.08rem}
+.lede mark{background:linear-gradient(transparent 52%,var(--yellow) 52%);color:inherit;padding:0 .1em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lede mark{color:var(--on);background:var(--yellow)}}
+:root[data-theme="dark"] .lede mark{color:var(--on);background:var(--yellow)}
+
+.block{display:grid;gap:12px}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.mode{position:relative;text-align:left;background:var(--card);border:2.5px solid var(--ink);border-radius:var(--r);padding:16px 18px 18px;display:grid;gap:4px;box-shadow:var(--shadow);transition:transform .12s,box-shadow .12s}
+.mode b{font-family:var(--f-display);font-weight:400;font-size:1.7rem;line-height:1}
+.mode small{color:var(--muted);font-size:.92rem}
+.mode .n{position:absolute;top:12px;right:14px;font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.mode[aria-pressed="true"]{background:var(--accent);color:var(--on)}
+.mode[aria-pressed="true"] small,.mode[aria-pressed="true"] .n{color:var(--on)}
+.mode[aria-pressed="true"]+.mode, .mode{}
+.mode:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;gap:7px;align-items:center;border:2px solid var(--ink);border-radius:999px;padding:6px 13px 6px 7px;font-size:.9rem;background:var(--card);transition:background .12s}
+.chip span b{font-family:var(--f-mono);font-weight:500;font-size:.7rem;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--ink)}
+.chip input:checked+span{background:var(--yellow);color:var(--on);border-color:var(--on)}
+.chip input:checked+span b{background:var(--on);color:var(--yellow);border-color:var(--on)}
+.chip input:not(:checked)+span{opacity:.55;text-decoration:line-through;text-decoration-thickness:1.5px}
+.chip input:focus-visible+span{outline:3px dashed var(--blue);outline-offset:2px}
+.between{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.linkish{background:none;border:0;padding:0;color:var(--blue);font-weight:700;text-decoration:underline;text-underline-offset:3px;font-size:.92rem}
+
+.cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.btn{border:2.5px solid var(--ink);border-radius:999px;padding:14px 26px;background:var(--blue);color:#fff;font-family:var(--f-display);font-size:1.25rem;line-height:1;box-shadow:var(--shadow);transition:transform .1s,box-shadow .1s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn:active{transform:translate(5px,5px);box-shadow:0 0 0 var(--ink)}
+.btn.alt{background:var(--yellow);color:var(--on)}
+.btn.ghost{background:var(--card);color:var(--ink)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:var(--shadow)}
+.record{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+
+/* ===== Questão ===== */
+.hud{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.pips{display:flex;flex-wrap:wrap;gap:5px;max-width:100%}
+.pip{width:13px;height:13px;border-radius:50%;border:2px solid var(--ink);background:transparent;transition:background .2s,transform .2s}
+.pip.ok{background:var(--ok)} .pip.bad{background:var(--bad)}
+.pip.now{background:var(--yellow);transform:scale(1.25)}
+.streak{font-family:var(--f-mono);font-size:.8rem;background:var(--ink);color:var(--paper);padding:4px 10px;border-radius:999px;transition:transform .2s}
+.streak.bump{transform:scale(1.15) rotate(-3deg)}
+.qcard{position:relative;background:var(--card);border:2.5px solid var(--ink);border-radius:var(--r);box-shadow:8px 8px 0 var(--accent);padding:26px 24px 24px;display:grid;gap:20px;overflow:hidden}
+.qcard::before{content:"";position:absolute;right:-30px;top:-30px;width:150px;height:150px;border-radius:50%;
+  background:radial-gradient(circle,var(--blue) 0 1.4px,transparent 1.8px) 0 0/9px 9px;opacity:.35;pointer-events:none}
+.topic{justify-self:start;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;background:var(--blue);color:#fff;padding:5px 10px;border-radius:6px;position:relative}
+.q{font-weight:700;font-size:clamp(1.3rem,4vw,1.75rem);line-height:1.28;text-wrap:balance;position:relative}
+.q .txt{display:block;font-weight:400;font-size:clamp(.98rem,3vw,1.08rem);line-height:1.5;text-wrap:pretty;background:var(--paper-2);border-left:5px solid var(--blue);border-radius:8px;padding:12px 14px;margin-bottom:14px}
+.q .txt b{font-weight:700}
+.q .src{display:block;font-family:var(--f-mono);font-size:.72rem;color:var(--muted);margin-top:6px}
+.q em{font-style:normal;background:linear-gradient(transparent 55%,var(--yellow) 55%);padding:0 .08em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .q em{background:var(--yellow);color:var(--on);border-radius:3px}}
+:root[data-theme="dark"] .q em{background:var(--yellow);color:var(--on);border-radius:3px}
+.opts{display:grid;gap:12px}
+.opt{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center;text-align:left;background:var(--paper);border:2.5px solid var(--ink);border-radius:12px;padding:12px 14px;font-size:1.05rem;
+  box-shadow:4px 4px 0 var(--ink);transition:transform .1s,box-shadow .1s,background .15s;animation:in .35s both}
+.opt:nth-child(2){animation-delay:.05s}.opt:nth-child(3){animation-delay:.1s}.opt:nth-child(4){animation-delay:.15s}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.opt:hover:not(:disabled){transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.opt:active:not(:disabled){transform:translate(4px,4px);box-shadow:0 0 0 var(--ink)}
+.opt .k{font-family:var(--f-display);font-size:1.05rem;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--paper)}
+.opt:disabled{cursor:default}
+.opt.dim{opacity:.45}
+.opt.ok{background:var(--ok);color:var(--on);border-color:var(--on);box-shadow:4px 4px 0 var(--on)}
+.opt.ok .k{background:var(--on);color:var(--ok)}
+.opt.bad{background:var(--bad);color:var(--on);border-color:var(--on);box-shadow:4px 4px 0 var(--on);animation:shake .4s}
+.opt.bad .k{background:var(--on);color:var(--bad)}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.stamp{position:absolute;top:18px;right:16px;font-family:var(--f-display);font-size:1.6rem;line-height:1;padding:8px 14px;border:3.5px solid currentColor;border-radius:10px;transform:rotate(-12deg);
+  background:var(--card);pointer-events:none;animation:stamp .35s cubic-bezier(.2,1.6,.4,1) both;z-index:2}
+.stamp.ok{color:var(--ok)} .stamp.bad{color:var(--bad)}
+@keyframes stamp{from{opacity:0;transform:rotate(-12deg) scale(2.2)}}
+.feedback{border:2.5px dashed var(--ink);border-radius:12px;padding:14px 16px;background:var(--paper-2);animation:in .3s both}
+.feedback strong{font-family:var(--f-display);font-weight:400;font-size:1.15rem;display:block;margin-bottom:2px}
+.feedback .ans{background:var(--yellow);color:var(--on);padding:0 .25em;border-radius:3px;font-weight:700}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.keys{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.keys kbd{font-family:inherit;border:1.5px solid var(--muted);border-radius:4px;padding:0 5px}
+
+/* ===== Resultado ===== */
+.poster{position:relative;background:var(--card);border:2.5px solid var(--ink);border-radius:var(--r);box-shadow:8px 8px 0 var(--blue);padding:28px 24px;display:grid;gap:18px;overflow:hidden}
+.poster::before{content:"";position:absolute;inset:auto -60px -60px auto;width:260px;height:260px;border-radius:50%;
+  background:radial-gradient(circle,var(--accent) 0 1.8px,transparent 2.2px) 0 0/11px 11px;opacity:.4;pointer-events:none}
+.score{font-family:var(--f-display);font-size:clamp(4.2rem,20vw,8.5rem);line-height:.85;font-variant-numeric:tabular-nums;position:relative}
+.score small{font-family:var(--f-mono);font-size:1rem;color:var(--muted);display:block;margin-top:10px;text-shadow:none;mix-blend-mode:normal}
+.ribbon{justify-self:start;position:relative;font-family:var(--f-display);font-size:clamp(1.5rem,5.5vw,2.3rem);line-height:1.05;background:var(--yellow);color:var(--on);
+  padding:10px 18px;transform:rotate(-2deg);border:2.5px solid var(--on);box-shadow:5px 5px 0 var(--on)}
+.desc{max-width:54ch;position:relative}
+.topics{display:grid;gap:10px;position:relative}
+.trow{display:grid;grid-template-columns:minmax(0,1fr) 120px 42px;gap:12px;align-items:center;font-size:.95rem}
+.trow .name{min-width:0}
+.tb{height:12px;border:2px solid var(--ink);border-radius:999px;overflow:hidden;background:var(--paper)}
+.tb i{display:block;height:100%;transform-origin:left;animation:grow .7s both}
+@keyframes grow{from{transform:scaleX(0)}}
+.trow .n{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+.tag{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;background:var(--bad);color:var(--on);padding:1px 6px;border-radius:4px;margin-left:6px;white-space:nowrap}
+.actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;position:relative}
+.toast{font-family:var(--f-mono);font-size:.8rem;color:var(--ok);overflow-wrap:anywhere}
+footer{text-align:center;font-family:var(--f-mono);font-size:.72rem;color:var(--muted);letter-spacing:.06em}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:40}
+
+@media (max-width:520px){
+  .sticker{width:78px;height:78px;font-size:.85rem;top:-10px;right:-4px}
+  .qcard{padding:22px 16px 18px}
+  .poster{padding:22px 16px}
+  .trow{grid-template-columns:minmax(0,1fr) 72px 38px}
+  .stamp{font-size:1.2rem;top:14px;right:10px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="blob a" aria-hidden="true"></div>
+<div class="blob b" aria-hidden="true"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<div class="wrap">
+  <!-- INÍCIO -->
+  <section id="start" class="block" style="gap:30px">
+    <header class="hero">
+      <span class="label">Inglês · 6º ano · questões 21 a 25</span>
+      <h1 class="riso"><span>English</span><span class="l2">em Jogo</span></h1>
+      <div class="sticker" aria-hidden="true">20<br>questões</div>
+      <p class="lede">Do <mark>Present Continuous</mark> ao <mark>genitive case</mark>: questões no modelo da prova, com a explicação na hora e seu título no final. Depois, desafie a turma.</p>
+    </header>
+
+    <div class="block">
+      <span class="label">1 · Escolha o modo</span>
+      <div class="modes" role="group" aria-label="Modo do quiz">
+        <button class="mode" id="m-rapido" data-mode="rapido" aria-pressed="true"><span class="n">~2 min</span><b>Rápido</b><small>1 questão por tópico</small></button>
+        <button class="mode" id="m-estudo" data-mode="estudo" aria-pressed="false"><span class="n">~5 min</span><b>Estudo</b><small>10 questões variadas</small></button>
+        <button class="mode" id="m-completo" data-mode="completo" aria-pressed="false"><span class="n">~10 min</span><b>Completo</b><small id="allCount">Todas as questões</small></button>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="between"><span class="label">2 · Tópicos incluídos</span><button class="linkish" id="toggleAll">Desmarcar todos</button></div>
+      <div class="chips" id="chips"></div>
+    </div>
+
+    <div class="cta">
+      <button class="btn" id="go">Começar</button>
+      <span class="record" id="count"></span>
+    </div>
+    <p class="record" id="best" hidden></p>
+  </section>
+
+  <!-- QUESTÃO -->
+  <section id="quiz" class="block" style="gap:18px" hidden>
+    <div class="hud">
+      <span class="label" id="qNum"></span>
+      <span class="streak" id="streak" hidden></span>
+    </div>
+    <div class="pips" id="pips" aria-hidden="true"></div>
+    <article class="qcard" aria-live="polite">
+      <span class="topic" id="qTopic"></span>
+      <p class="q" id="qText"></p>
+      <div class="opts" id="opts"></div>
+      <div class="feedback" id="fb" hidden></div>
+    </article>
+    <div class="foot">
+      <span class="keys"><kbd>1</kbd>–<kbd>4</kbd> responde · <kbd>Enter</kbd> avança</span>
+      <button class="btn" id="next" hidden>Próxima</button>
+    </div>
+  </section>
+
+  <!-- RESULTADO -->
+  <section id="result" class="block" hidden>
+    <article class="poster">
+      <span class="label" style="position:relative">English em Jogo · resultado</span>
+      <div class="score riso" id="rScore"></div>
+      <div class="ribbon" id="rBadge"></div>
+      <p class="desc" id="rDesc"></p>
+      <div class="block" style="position:relative">
+        <span class="label">Desempenho por tópico</span>
+        <div class="topics" id="rTopics"></div>
+      </div>
+    </article>
+    <div class="actions">
+      <button class="btn alt" id="retryWeak">Treinar tópicos com erro</button>
+      <button class="btn ghost" id="share">Copiar resultado</button>
+      <button class="linkish" id="again">Jogar de novo</button>
+    </div>
+    <span class="toast" id="toast" aria-live="polite"></span>
+  </section>
+
+  <footer>ENGLISH EM JOGO · INGLÊS 6º ANO</footer>
+</div>
+
+<script>
+const TOPICS=[
+ "Present Continuous","Leitura de Infográfico","Genitive Case ('s)",
+ "Ideia Principal do Texto","Simple Present"];
+
+// t = tópico, q = enunciado, o = opções (a primeira é a correta; embaralhadas na tela), e = explicação
+const Q=[
+ // ---- 0 · Present Continuous (modelo da questão 21) ----
+ {t:0,q:'<span class="txt"><b>Teacher:</b> "Students, please be quiet!"<br><b>Ana:</b> "Sorry! We are talking about the test."<br><b>Teacher:</b> "Are you listening to me?"<br><b>Ana:</b> "Yes! We aren\'t talking anymore."</span>In the comic strip, the negative form of the Present Continuous is used in',o:['"We aren\'t talking anymore."','"please be quiet!"','"We are talking about the test."','"Are you listening to me?"'],e:'Negativa do Present Continuous = sujeito + am/is/are + <b>not</b> + verbo-ing. "aren\'t" = are not. "We are talking" é afirmativa e "Are you listening?" é interrogativa.'},
+ {t:0,q:'Look! It <em>___</em> outside. Take an umbrella!',o:['is raining','rains','rained','are raining'],e:'"Look!" mostra que a ação está acontecendo agora: Present Continuous. Com "it", usa-se <b>is</b> + verbo-ing.'},
+ {t:0,q:'What is the negative form of "She is watching TV"?',o:["She isn't watching TV.","She doesn't watching TV.","She not is watching TV.","She isn't watch TV."],e:'Basta colocar <b>not</b> depois do verbo to be: is not (isn\'t) + watching. "Doesn\'t" é do Simple Present, e o verbo principal precisa manter o -ing.'},
+ {t:0,q:'Which sentence describes an action happening <em>at the moment of speaking</em>?',o:['My brother is sleeping right now.','My brother sleeps eight hours every night.','My brother slept late yesterday.','My brother will sleep early tomorrow.'],e:'"Is sleeping" + "right now" indica ação em andamento: Present Continuous. As outras falam de rotina (sleeps), passado (slept) e futuro (will sleep).'},
+
+ // ---- 1 · Leitura de infográfico (modelo da questão 22) ----
+ {t:1,q:'<span class="txt"><b>SLEEP WELL!</b><br>Children (6–12 years): 9 to 12 hours per night.<br>Teenagers (13–18 years): 8 to 10 hours per night.<br>Tip: turn off screens 1 hour before bed.</span>According to the infographic, a 10-year-old child should sleep',o:['9 to 12 hours per night.','8 to 10 hours per night.','only 1 hour per night.','more than 12 hours per night.'],e:'Uma criança de 10 anos está na faixa "Children (6–12 years)", que recomenda de 9 a 12 horas. "1 hour" é o tempo sem telas antes de dormir.'},
+ {t:1,q:'<span class="txt"><b>DRINK WATER!</b><br>Water helps your body:<br>✔ keeps you cool<br>✔ helps your brain concentrate<br>✔ protects your muscles<br>Drink 6 to 8 glasses a day.</span>The infographic shows that water',o:['helps the body in different ways.','is only important for athletes.','should be drunk once a week.','is bad for your brain.'],e:'O infográfico lista vários benefícios (temperatura, concentração, músculos). Nada fala de atletas, e a recomendação é de 6 a 8 copos <b>por dia</b>.'},
+ {t:1,q:'<span class="txt"><b>RECYCLE!</b><br>1 recycled can = enough energy to run a TV for 3 hours.<br>1 ton of recycled paper = 17 trees saved.<br>Small actions, big results!</span>The infographic shows that',o:['simple recycling actions can make a big difference.','people should buy new TVs.','paper is made without trees.','recycling is only for big companies.'],e:'Os números comparam uma ação pequena (reciclar uma lata, papel) com um grande resultado. A frase "Small actions, big results!" resume a ideia.'},
+ {t:1,q:'<span class="txt"><b>SCREEN TIME</b><br>Kids (6–10 years): 1 to 2 hours a day.<br>Swap screen time for: reading 📚 · playing outside ⚽ · drawing 🎨</span><span class="txt" style="margin-top:-6px">Vocabulary: <b>swap</b>: trocar.</span>The infographic suggests that children should',o:['replace some screen time with other activities.','use the phone all day.','stop reading books.','play only video games.'],e:'"Swap screen time for..." = troque o tempo de tela por ler, brincar ao ar livre e desenhar. O infográfico limita as telas a 1–2 horas por dia.'},
+
+ // ---- 2 · Genitive case (modelo da questão 23) ----
+ {t:2,q:'<span class="txt"><b>My grandmother\'s garden</b><br>My grandmother has a beautiful garden with roses and tomatoes. On weekends, I help her water the plants.</span>In the title of the text, the use of the genitive case indicates that the',o:['garden belongs to the grandmother.','garden was bought by the boy\'s friends.','garden belongs to the city.','garden was sold to the boy.'],e:'O <b>\'s</b> (genitive case) indica posse: grandmother\'s garden = o jardim da avó. O próprio texto confirma: "My grandmother has a beautiful garden".'},
+ {t:2,q:'This is <em>___</em> bike. He rides it to school every day. (The bike belongs to Peter.)',o:["Peter's","Peters","Peter","Peters'"],e:'Para indicar posse com um nome no singular, acrescente <b>\'s</b>: Peter\'s bike = a bicicleta do Peter.'},
+ {t:2,q:'Two girls share one bedroom. Complete: "The <em>___</em> bedroom is big."',o:["girls'","girl's","girls's","girls"],e:'Quando o possuidor está no plural terminado em -s (girls), coloca-se só o apóstrofo depois do s: girls\' bedroom = o quarto das meninas. "Girl\'s" seria de uma menina só.'},
+ {t:2,q:'In which sentence does <em>\'s</em> indicate possession?',o:["This is Mark's notebook.","Mark's at school now.","It's a sunny day.","She's my teacher."],e:'Em "Mark\'s notebook", o \'s mostra que o caderno é do Mark. Nas outras frases, \'s é a contração de <b>is</b>: Mark is, It is, She is.'},
+
+ // ---- 3 · Ideia principal (modelo da questão 24) ----
+ {t:3,q:'<span class="txt">Brazil is famous around the world for its music. Samba, forró and bossa nova are Brazilian rhythms known in many countries. For many Brazilians, music is part of daily life and of their celebrations.</span>The text expresses the main idea that',o:['music is an important part of Brazilian culture.','Brazilians only listen to samba.','Brazil has the best music in the world.','music is not popular in Brazil.'],e:'O texto mostra a música como parte do dia a dia e das festas: cultura. "The best music" é opinião que o texto não dá, e ele cita vários ritmos, não só samba.'},
+ {t:3,q:'<span class="txt">Dogs are great friends for children. They help kids to be more active, because they need walks every day. Dogs also teach responsibility: children have to feed them and give them water.</span>The main idea of the text is that',o:['dogs can be good for children.','dogs don\'t need walks.','children should not have pets.','cats are better than dogs.'],e:'Todas as frases apresentam benefícios dos cães para as crianças (atividade e responsabilidade). Gatos nem são citados.'},
+ {t:3,q:'<span class="txt">Breakfast is an important meal. After a night of sleep, the body needs energy. Students who eat a good breakfast usually concentrate better at school.</span><span class="txt" style="margin-top:-6px">Vocabulary: <b>meal</b>: refeição.</span>The text expresses the main idea that',o:['breakfast gives energy and helps students at school.','students should skip breakfast.','sleeping is more important than eating.','only adults need breakfast.'],e:'A ideia principal junta as informações do texto: o café da manhã dá energia e ajuda na concentração. As outras opções contradizem ou não aparecem no texto.'},
+ {t:3,q:'<span class="txt">Many cities around the world are creating bike lanes. Bicycles don\'t pollute the air, they are cheap, and riding them is good exercise.</span><span class="txt" style="margin-top:-6px">Vocabulary: <b>bike lanes</b>: ciclovias.</span>The text expresses the main idea that',o:['bicycles bring benefits to people and cities.','bicycles are very expensive.','cities don\'t like bicycles.','riding a bike is bad for your health.'],e:'O texto lista três vantagens: não poluem, são baratas e são exercício. Por isso as cidades criam ciclovias.'},
+
+ // ---- 4 · Simple Present (modelo da questão 25) ----
+ {t:4,q:'<span class="txt">Every day, Julia wakes up at 5 a.m. She swims for two hours before school and trains again in the afternoon. On Sundays, she rests.</span>In the text, the simple present tense is used to express something',o:['that is part of the athlete\'s routine.','that is planned to happen in the future.','that the athlete did in the past.','that is happening at this moment.'],e:'"Every day" e "On Sundays" indicam hábito: o Simple Present (wakes, swims, trains, rests) descreve a rotina da Julia.'},
+ {t:4,q:'My father <em>___</em> to work by bus every day.',o:['goes','go','is going','went'],e:'Com he/she/it no Simple Present, o verbo ganha -s ou -es: go → <b>goes</b>. "Every day" pede o Simple Present, não o Continuous.'},
+ {t:4,q:'"Water boils at 100 °C." In this sentence, the simple present is used to express something',o:['that is universally true.','that is part of a person\'s routine.','that happened in the past.','that is planned for tomorrow.'],e:'Além da rotina, o Simple Present expressa <b>verdades universais</b> e fatos científicos: a água sempre ferve a 100 °C ao nível do mar.'},
+ {t:4,q:'Which sentence expresses a <em>habit</em>?',o:['I always brush my teeth after lunch.','I am brushing my teeth now.','I brushed my teeth an hour ago.','I am going to brush my teeth later.'],e:'"Always" + Simple Present indica hábito. As demais falam de agora (am brushing), passado (brushed) e futuro (am going to).'}
+];
+
+const $=s=>document.querySelector(s);
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let mode="rapido", selected=new Set(TOPICS.map((_,i)=>i)), deck=[], idx=0, answers=[], locked=false, streak=0;
+
+/* ---------- Início ---------- */
+$("#chips").innerHTML=TOPICS.map((t,i)=>`<label class="chip"><input type="checkbox" id="t${i}" data-i="${i}" checked><span><b>${String(i+1).padStart(2,"0")}</b>${t}</span></label>`).join("");
+$("#chips").addEventListener("change",e=>{const i=+e.target.dataset.i;e.target.checked?selected.add(i):selected.delete(i);updateCount()});
+$("#toggleAll").onclick=()=>{const all=selected.size<TOPICS.length;document.querySelectorAll("#chips input").forEach(c=>{c.checked=all});selected=new Set(all?TOPICS.map((_,i)=>i):[]);updateCount()};
+document.querySelectorAll(".mode").forEach(b=>b.onclick=()=>{mode=b.dataset.mode;document.querySelectorAll(".mode").forEach(x=>x.setAttribute("aria-pressed",x===b));updateCount()});
+const pool=ts=>Q.filter(q=>ts.has(q.t)).length;
+const sizeFor=(m,ts)=>m==="rapido"?ts.size:m==="estudo"?Math.min(10,pool(ts)):pool(ts);
+$("#allCount").textContent=`Todas as ${Q.length} questões`;
+function updateCount(){const n=sizeFor(mode,selected);$("#count").textContent=n?`${n} questões`:"Selecione ao menos 1 tópico";$("#go").disabled=!n;$("#toggleAll").textContent=selected.size<TOPICS.length?"Marcar todos":"Desmarcar todos"}
+function showBest(){const b=store.get("eej-best");const el=$("#best");if(b){el.hidden=false;el.textContent=`Seu recorde: ${b.pct}% · ${b.title}`}}
+updateCount();showBest();
+
+/* ---------- Quiz ---------- */
+function build(topics,m){
+  // rodízio entre tópicos: garante variedade e cobre todos antes de repetir tópico
+  const pools=shuffle([...topics]).map(t=>shuffle(Q.filter(q=>q.t===t)));
+  const max=sizeFor(m,topics),per=m==="rapido"?1:Infinity;let d=[],round=0;
+  while(d.length<max){let added=false;for(const p of pools){if(round<per&&p[round]&&d.length<max){d.push(p[round]);added=true}}if(!added)break;round++}
+  return shuffle(d).map(q=>({...q,opts:shuffle(q.o)}));
+}
+function start(topics,m){deck=build(topics,m);idx=0;answers=[];streak=0;
+  $("#pips").innerHTML=deck.map(()=>'<span class="pip"></span>').join("");show("quiz");render()}
+$("#go").onclick=()=>start(selected,mode);
+
+function show(id){["start","quiz","result"].forEach(s=>$("#"+s).hidden=s!==id);window.scrollTo({top:0})}
+function render(){
+  const q=deck[idx];locked=false;
+  $("#qTopic").textContent=TOPICS[q.t];
+  $("#qNum").textContent=`Questão ${idx+1} de ${deck.length}`;
+  document.querySelectorAll(".pip").forEach((p,i)=>p.classList.toggle("now",i===idx));
+  $("#qText").innerHTML=q.q;
+  $("#opts").innerHTML=q.opts.map((o,i)=>`<button class="opt" id="o${i}" data-i="${i}"><span class="k">${"ABCD"[i]}</span><span>${o}</span></button>`).join("");
+  document.querySelector(".stamp")?.remove();
+  $("#fb").hidden=true;$("#next").hidden=true;
+  $("#o0").focus({preventScroll:true});
+}
+$("#opts").addEventListener("click",e=>{const b=e.target.closest(".opt");if(b)answer(+b.dataset.i)});
+function answer(i){
+  if(locked)return;const q=deck[idx];if(i>=q.opts.length)return;locked=true;
+  const correct=q.opts.indexOf(q.o[0]), ok=i===correct;answers.push({t:q.t,ok});
+  streak=ok?streak+1:0;
+  document.querySelectorAll(".opt").forEach((b,j)=>{b.disabled=true;if(j===correct)b.classList.add("ok");else if(j===i)b.classList.add("bad");else b.classList.add("dim")});
+  const pip=document.querySelectorAll(".pip")[idx];pip.classList.remove("now");pip.classList.add(ok?"ok":"bad");
+  const st=document.createElement("span");st.className="stamp "+(ok?"ok":"bad");st.textContent=ok?"CERTO!":"QUASE!";$(".qcard").appendChild(st);
+  const s=$("#streak");if(streak>=2){s.hidden=false;s.textContent=`Sequência ×${streak}`;s.classList.remove("bump");void s.offsetWidth;s.classList.add("bump")}else s.hidden=true;
+  const fb=$("#fb");
+  fb.innerHTML=`<strong>${ok?"Mandou bem.":"Quase lá."}</strong>${ok?"":`Resposta certa: <span class="ans">${q.o[0]}</span>. `}${q.e}`;
+  fb.hidden=false;$("#next").hidden=false;$("#next").textContent=idx===deck.length-1?"Ver resultado":"Próxima";$("#next").focus({preventScroll:true});
+}
+$("#next").onclick=()=>{idx++;idx<deck.length?render():finish()};
+document.addEventListener("keydown",e=>{
+  if($("#quiz").hidden)return;
+  const k=e.key.toLowerCase(),n="1234".includes(k)?"1234".indexOf(k):"abcd".indexOf(k);
+  if(!locked&&n>=0&&k.length===1){e.preventDefault();answer(n)}
+  else if(locked&&e.key==="Enter"&&document.activeElement!==$("#next")){e.preventDefault();$("#next").click()}
+});
+
+/* ---------- Resultado ---------- */
+const TIERS=[
+ [100,"Native Speaker","Gabarito perfeito. Present Continuous, Simple Present e genitive case não têm segredo para você."],
+ [85,"Fluent Reader","Domínio sólido. Um ou outro detalhe escapou, mas você lê e entende muito bem."],
+ [70,"Grammar Explorer","Boa base. Revise os tópicos marcados abaixo e o próximo título é seu."],
+ [50,"Word Hunter","Você está no caminho. Os tópicos com erro mostram exatamente onde estudar."],
+ [0,"English Beginner","Todo mestre começou aqui. Treine os tópicos com erro e jogue de novo."]];
+let last={};
+function finish(){
+  const hit=answers.filter(a=>a.ok).length,total=answers.length,pct=Math.round(hit/total*100);
+  const [,title,desc]=TIERS.find(t=>pct>=t[0]);
+  const by={};answers.forEach(a=>{by[a.t]=by[a.t]||{h:0,n:0};by[a.t].n++;if(a.ok)by[a.t].h++});
+  const weak=Object.keys(by).filter(t=>by[t].h<by[t].n).map(Number);
+  last={hit,total,pct,title,weak};
+  const best=store.get("eej-best"),isRecord=!best||pct>best.pct;
+  if(isRecord&&total>=5)store.set("eej-best",{pct,title});
+  $("#rScore").innerHTML=`${pct}%<small>${hit} de ${total} acertos${isRecord&&best?" · novo recorde!":""}</small>`;
+  $("#rBadge").textContent=title;$("#rDesc").textContent=desc;
+  $("#rTopics").innerHTML=Object.keys(by).map(Number).sort((a,b)=>a-b).map((t,k)=>{const r=by[t],p=r.h/r.n*100;
+    return `<div class="trow"><span class="name">${TOPICS[t]}${r.h<r.n?'<span class="tag">revisar</span>':""}</span><span class="tb"><i style="width:${p}%;background:var(${p===100?"--ok":p>=50?"--blue":"--bad"});animation-delay:${k*.05}s"></i></span><span class="n">${r.h}/${r.n}</span></div>`}).join("");
+  $("#retryWeak").disabled=!weak.length;$("#retryWeak").textContent=weak.length?`Treinar ${weak.length} tópico${weak.length>1?"s":""} com erro`:"Nenhum tópico com erro";
+  $("#toast").textContent="";show("result");showBest();
+  if(pct>=70)confetti();
+}
+$("#retryWeak").onclick=()=>last.weak.length&&start(new Set(last.weak),"completo");
+$("#again").onclick=()=>show("start");
+$("#share").onclick=()=>{
+  const url=location.protocol.startsWith("http")?" "+location.origin+location.pathname:"";
+  const txt=`Fiz o English em Jogo: ${last.pct}% (${last.hit}/${last.total}) e virei "${last.title}". Consegue me superar?${url}`;
+  const done=()=>{$("#toast").textContent="Resultado copiado. Cole no grupo da turma."};
+  try{navigator.clipboard.writeText(txt).then(done,()=>{$("#toast").textContent=txt})}catch(e){$("#toast").textContent=txt}
+};
+
+/* ---------- Confete (tintas do cartaz) ---------- */
+function confetti(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  const c=$("#confetti"),x=c.getContext("2d"),dpr=Math.min(devicePixelRatio||1,2);
+  c.width=innerWidth*dpr;c.height=innerHeight*dpr;x.scale(dpr,dpr);
+  const cs=getComputedStyle(document.documentElement),cols=["--accent","--blue","--yellow","--ok"].map(v=>cs.getPropertyValue(v).trim());
+  const P=Array.from({length:140},()=>({x:innerWidth/2+(Math.random()-.5)*120,y:innerHeight*.35,vx:(Math.random()-.5)*14,vy:-Math.random()*14-4,r:Math.random()*6+4,a:Math.random()*6,va:(Math.random()-.5)*.4,c:cols[Math.floor(Math.random()*cols.length)],round:Math.random()<.4}));
+  const t0=performance.now();
+  (function tick(t){const el=t-t0;x.clearRect(0,0,innerWidth,innerHeight);
+    P.forEach(p=>{p.vy+=.35;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.a+=p.va;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.globalAlpha=Math.max(0,1-el/2600);
+      if(p.round){x.beginPath();x.arc(0,0,p.r/2,0,7);x.fill()}else x.fillRect(-p.r/2,-p.r/4,p.r,p.r/2);x.restore()});
+    if(el<2600)requestAnimationFrame(tick);else x.clearRect(0,0,innerWidth,innerHeight)})(t0);
+}
+</script>
+</body>
+</html>
