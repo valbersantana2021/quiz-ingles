@@ -133,6 +133,9 @@ button{font:inherit;color:inherit;cursor:pointer}
 
 /* ===== Questão ===== */
 .hud{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.hud-l{display:flex;align-items:center;gap:12px}
+.back{border:1.5px solid var(--aqua);background:var(--card);color:var(--teal);border-radius:999px;padding:6px 14px;font-size:.9rem}
+.back:hover{background:var(--paper-2)}
 .pips{display:flex;flex-wrap:wrap;gap:6px;max-width:100%}
 .pip{width:12px;height:12px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s}
 .pip.ok{background:var(--ok)} .pip.bad{background:var(--bad)}
@@ -266,7 +269,7 @@ footer b{font-family:var(--f-accent);font-style:italic;font-weight:800;color:var
   <!-- QUESTÃO -->
   <section id="quiz" class="block" style="gap:18px" hidden>
     <div class="hud">
-      <span class="label" id="qNum"></span>
+      <div class="hud-l"><button class="back" id="exit" aria-label="Voltar para a tela principal">← Mapa</button><span class="label" id="qNum"></span></div>
       <span class="streak" id="streak" hidden></span>
     </div>
     <div class="pips" id="pips" aria-hidden="true"></div>
@@ -278,7 +281,7 @@ footer b{font-family:var(--f-accent);font-style:italic;font-weight:800;color:var
       <div class="feedback" id="fb" hidden></div>
     </article>
     <div class="foot">
-      <span class="keys"><kbd>1</kbd>–<kbd>4</kbd> responde · <kbd>Enter</kbd> avança</span>
+      <span class="keys"><kbd>1</kbd>–<kbd>4</kbd> responde · <kbd>Enter</kbd> avança · <kbd>Esc</kbd> volta ao mapa</span>
       <button class="btn" id="next" hidden>Próxima</button>
     </div>
   </section>
@@ -490,6 +493,9 @@ function answer(i){
   fb.hidden=false;$("#next").hidden=false;$("#next").textContent=idx===deck.length-1?"Ver resultado":"Próxima";$("#next").focus({preventScroll:true});
 }
 $("#next").onclick=()=>{idx++;idx<deck.length?render():finish()};
+// Sair no meio da partida: pede confirmação só se já houver resposta, para não perder progresso por engano
+function exitQuiz(){if(answers.length&&!confirm("Sair da missão? As respostas desta partida não serão salvas."))return;stopAudio();show("start")}
+$("#exit").onclick=exitQuiz;
 
 /* ---------- Listening (voz do navegador, en-US) ---------- */
 const canSpeak="speechSynthesis" in window&&"SpeechSynthesisUtterance" in window;
@@ -506,6 +512,7 @@ function script(lines,open){return `<details class="script"${open?" open":""}><s
 if(canSpeak)speechSynthesis.getVoices();
 document.addEventListener("keydown",e=>{
   if($("#quiz").hidden)return;
+  if(e.key==="Escape"){e.preventDefault();exitQuiz();return}
   const k=e.key.toLowerCase(),n="1234".includes(k)?"1234".indexOf(k):"abcd".indexOf(k);
   if(!locked&&n>=0&&k.length===1){e.preventDefault();answer(n)}
   else if(locked&&e.key==="Enter"&&document.activeElement!==$("#next")){e.preventDefault();$("#next").click()}
