@@ -93,6 +93,9 @@ button{font:inherit;color:inherit;cursor:pointer}
 .more>summary::before{content:"▸";transition:transform .15s}
 .more[open]>summary::before{transform:rotate(90deg)}
 .more-body{display:grid;gap:26px;margin-top:18px}
+.reset{display:grid;gap:4px;border-top:1px dashed var(--line);padding-top:14px}
+.reset small{color:var(--muted);font-size:.82rem}
+#resetAll{color:var(--bad);justify-self:start}
 .gain{display:flex;flex-wrap:wrap;gap:8px}
 .gain span{background:var(--paper-2);color:var(--teal);border-radius:999px;padding:6px 14px;font-size:.92rem}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center}
@@ -262,6 +265,10 @@ footer b{font-family:var(--f-accent);font-style:italic;font-weight:800;color:var
           <span class="record" id="count"></span>
         </div>
         <p class="record" id="best" hidden></p>
+        <div class="reset">
+          <button class="linkish" id="resetAll">Zerar meu progresso</button>
+          <small>Apaga estrelas, sequência de dias e recorde salvos neste navegador.</small>
+        </div>
       </div>
     </details>
   </section>
@@ -445,6 +452,9 @@ function renderMap(){
   $("#streakTxt").textContent=st.count?`🔥 ${plural(st.count,"dia seguido","dias seguidos")}${st.played?"":" · jogue hoje!"}`:"🔥 Comece sua sequência hoje";
 }
 $("#worlds").addEventListener("click",e=>{const b=e.target.closest(".stop");if(b)start(new Set([+b.dataset.t]),"completo")});
+$("#resetAll").onclick=()=>{if(!confirm("Zerar todo o progresso? Estrelas, sequência de dias e recorde serão apagados deste navegador."))return;
+  ["eej-topics","eej-streak","eej-best"].forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});
+  $("#best").hidden=true;renderMap();window.scrollTo({top:0,behavior:"smooth"})};
 $("#playNow").onclick=()=>start(new Set(TOPICS.map((_,i)=>i)),"rapido");
 updateCount();showBest();renderMap();
 
