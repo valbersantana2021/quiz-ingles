@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>English em Jogo</title>
-<meta name="description" content="Quiz de Inglês do 6º ano: questões da prova e Unit 8 (medicines and drugs), com listening. Descubra seu título!">
+<meta name="description" content="Quiz de Inglês do 6º ano: questões da prova e Unit 8 (How are medicines produced?), com listening. Descubra seu título!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="English em Jogo: qual é o seu título?">
-<meta property="og:description" content="44 questões de Inglês, explicação a cada resposta e listening com áudio. Faça o quiz e desafie a turma.">
+<meta property="og:description" content="46 questões de Inglês, explicação a cada resposta e listening com áudio. Faça o quiz e desafie a turma.">
 <meta name="theme-color" content="#1E9E6A">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -192,11 +192,11 @@ footer b{font-family:var(--f-accent);font-style:italic;font-weight:800;color:var
       <span class="label">Inglês · 6º ano · Prova 21–25 + Unit 8</span>
       <h1><span>Onde o inglês</span><span class="l2">vira descoberta.</span></h1>
       <p class="tagline">Leia, responda e <b>aprenda na hora.</b></p>
-      <p class="lede">Questões no modelo da prova e a <b>Unit 8: What are medicines and drugs?</b>, com texto, gramática e listening com áudio. Cada resposta traz a explicação, e no final você descobre seu título.</p>
+      <p class="lede">Questões no modelo da prova e a <b>Unit 8: How are medicines produced?</b> do livro <i>Futures</i>: vídeo, leitura, advice × suggestion e listening com áudio. Cada resposta traz a explicação, e no final você descobre seu título.</p>
     </header>
 
     <div class="stats" aria-label="Resumo do quiz">
-      <div class="stat"><b id="statQ">44</b><span>questões</span></div>
+      <div class="stat"><b id="statQ">46</b><span>questões</span></div>
       <div class="stat"><b id="statT">11</b><span>tópicos</span></div>
       <div class="stat"><b>3</b><span>modos</span></div>
     </div>
@@ -271,21 +271,21 @@ footer b{font-family:var(--f-accent);font-style:italic;font-weight:800;color:var
     <span class="toast" id="toast" aria-live="polite"></span>
   </section>
 
-  <footer><b>English em Jogo</b> · Inglês 6º ano<p class="credit">Unit 8 segue os temas de <i>Futures: project book, year 6</i> (Troika · Amais Educação, 2023). Questões, textos e áudios autorais para estudo.</p></footer>
+  <footer><b>English em Jogo</b> · Inglês 6º ano<p class="credit">Unit 8 baseada em <i>Futures: project book, year 6</i> (Troika · Amais Educação, 2023), p. 52–61, com trechos curtos do texto de leitura. O áudio da entrevista foi recriado para o quiz; o original está com o professor.</p></footer>
 </div>
 
 <script>
 const TOPICS=[
  "Present Continuous","Leitura de Infográfico","Genitive Case ('s)",
  "Ideia Principal do Texto","Simple Present",
- "U8 · What are medicines?","U8 · Types of medicines","U8 · Medicines and the body",
- "U8 · Text · After you read","U8 · Language: should","U8 · Listening"];
+ "U8 · Video: medicines and drugs","U8 · Reading: what are medicines?","U8 · Reading: types of medicines",
+ "U8 · After you read · Culture","U8 · Language: advice × suggestion","U8 · Listening: doctor interview"];
 const GROUPS={prova:[0,1,2,3,4],unit8:[5,6,7,8,9,10]};
 
-// Textos e áudios compartilhados (Unit 8). Questões autorais sobre os temas da unidade.
-const TXT_MED='<span class="txt"><b>Medicines: friends or enemies?</b><br>When we are sick, medicines can help us feel better. Antibiotics fight infections caused by bacteria, and painkillers reduce pain. But medicines are not sweets! If we take the wrong medicine, or too much of it, it can hurt our body. That\'s why we should always follow the doctor\'s instructions and read the label. Children should only take medicines with the help of an adult.</span><span class="txt" style="margin-top:-6px">Vocabulary: <b>painkillers</b>: analgésicos · <b>sweets</b>: doces · <b>hurt</b>: machucar, fazer mal.</span>';
-const AUD_DOC=[["Doctor","Hello, Tom. What's the matter?"],["Tom","I have a terrible headache and a fever."],["Doctor","Let me see... OK. Take this medicine three times a day, and drink lots of water."],["Tom","Thank you, doctor."]];
-const AUD_PHA=[["Pharmacist","Good afternoon. Can I help you?"],["Woman","Yes, please. My son has a bad cough."],["Pharmacist","Try this cough syrup. Give him five milliliters after meals. Don't give him more than that."],["Woman","Thanks a lot."]];
+// Unit 8: trechos curtos do texto de leitura do livro (p. 56) e áudio da entrevista recriado para o quiz.
+const TXT_R1='<span class="txt"><b>What are medicines?</b><br>Contrary to what people might think, many medicines are not totally <b>synthetic</b>. Many are made of substances found in nature, like plants. Penicillin are byproducts of organisms such as fungus. And a few are even biologically engineered by inserting genes into bacteria that make them produce the desired substance. While others are made in <b>labs</b> by mixing together a number of chemicals.</span>';
+const TXT_OTC='<span class="txt">There are also some medicines called <b>over-the-counter</b>. To buy these medicines, there\'s no need to have a prescription. This is usually the case for painkillers, and others for a high temperature, cough, or allergies. Even so, we should be cautious, because if not taken correctly, they can also cause uncomfortable side effects or have serious consequences to our health.</span>';
+const AUD_INT=[["Interviewer","Doctor, many people take medicines without a prescription. Is that a problem?"],["Doctor","Yes, it is. Self-medication is very common, and a large number of patients have adverse effects because of it."],["Interviewer","How do medicines work in the body?"],["Doctor","After the medicine is metabolised, the bloodstream carries it to the sick organ. But it can also reach healthy parts of the body and harm them. That's what we call a side effect."],["Interviewer","What happens when people stop taking a medicine?"],["Doctor","It doesn't leave the body immediately. It can take a few weeks."],["Interviewer","Can medication drugs cause addiction?"],["Doctor","Yes, some of them can. That's why you should always talk to a doctor first."]];
 
 // t = tópico, q = enunciado, o = opções (a primeira é a correta; embaralhadas na tela), e = explicação
 const Q=[
@@ -319,42 +319,44 @@ const Q=[
  {t:4,q:'"Water boils at 100 °C." In this sentence, the simple present is used to express something',o:['that is universally true.','that is part of a person\'s routine.','that happened in the past.','that is planned for tomorrow.'],e:'Além da rotina, o Simple Present expressa <b>verdades universais</b> e fatos científicos: a água sempre ferve a 100 °C ao nível do mar.'},
  {t:4,q:'Which sentence expresses a <em>habit</em>?',o:['I always brush my teeth after lunch.','I am brushing my teeth now.','I brushed my teeth an hour ago.','I am going to brush my teeth later.'],e:'"Always" + Simple Present indica hábito. As demais falam de agora (am brushing), passado (brushed) e futuro (am going to).'},
 
- // ================= UNIT 8 · What are medicines and drugs? =================
- // ---- 5 · What are medicines? ----
- {t:5,q:'<span class="txt">Medicines are substances that help our body to fight illnesses, feel better or stay healthy. Doctors and pharmacists tell us how and when to use them.</span>According to the text, medicines are used to',o:['help the body fight illnesses and feel better.','make people taller and stronger.','replace healthy food.','cure every problem immediately.'],e:'O texto diz que remédios ajudam o corpo a combater doenças, a se sentir melhor e a se manter saudável. Nada fala em substituir comida ou curar tudo na hora.'},
- {t:5,q:'Which word means "a person who prepares and sells medicines"?',o:['pharmacist','farmer','firefighter','teacher'],e:'<b>Pharmacist</b> = farmacêutico(a). Ele trabalha na <b>pharmacy</b> (farmácia), também chamada de <b>drugstore</b> nos EUA.'},
- {t:5,q:'A <em>prescription</em> is',o:['a doctor\'s written instruction about which medicine to take.','a type of cough syrup.','an unwanted reaction to a medicine.','the shop where you buy medicines.'],e:'<b>Prescription</b> = receita médica. Alguns remédios só podem ser vendidos com receita (prescription medicines); outros são vendidos sem ela (over-the-counter).'},
- {t:5,q:'<span class="txt">In English, the word <b>drug</b> can mean a medicine. But it is also used for substances that change how the body and the mind work and can be harmful to health, like tobacco and alcohol.</span>According to the text,',o:['the word "drug" can have more than one meaning.','all drugs are good for your health.','tobacco is a kind of medicine.','alcohol helps the body fight illnesses.'],e:'<b>Drug</b> tem dois sentidos: pode ser um remédio ou uma substância que altera o corpo e a mente e pode fazer mal. O contexto mostra qual é o sentido.'},
+ // ================= UNIT 8 · How are medicines produced? (Futures, year 6, p. 52–61) =================
+ // ---- 5 · Video: What are medicines and drugs? (p. 54) ----
+ {t:5,q:'<span class="txt"><b>Non-smoking campaign</b><br>🚭 SMOKING KILLS. Protect your lungs. Stop smoking today!</span>What\'s the purpose of this kind of campaign?',o:['To convince people not to smoke.','To sell more cigarettes.','To sell medicines in drugstores.','To teach people how to make medicines.'],e:'Campanhas antitabagismo tentam convencer as pessoas a não fumar ou a parar de fumar. Elas não vendem nada.'},
+ {t:5,q:'According to the video, which sentence is <em>correct</em>?',o:['Drugs have effects on the body.','Drugs don\'t have any effect on the body.','The way drugs work on the body is easy to understand.','The amount of the medicine taken doesn\'t influence its effect.'],e:'No livro, as frases falsas são corrigidas assim: drugs <b>have</b> effects on the body; the way drugs work is <b>difficult</b> to understand; the amount <b>influences</b> the effect.'},
+ {t:5,q:'Is it easy for smokers to stop smoking? Why?',o:['No, because their brain becomes addicted.','Yes, because cigarettes are medicines.','Yes, they only need to stop for one day.','No, because cigarettes are cheap.'],e:'A ideia principal do vídeo: drogas afetam o <b>cérebro</b>. O fumante fica viciado (addicted), por isso é difícil parar: "It\'s difficult for smokers to stop smoking."'},
+ {t:5,q:'How are drugs and medicines <em>similar</em>?',o:['Both are substances that change how the body works.','Both are always prescribed by a doctor.','Both are always good for our health.','Both are sold only in supermarkets.'],e:'Remédios e drogas são substâncias que agem no corpo. A diferença é que o remédio, usado corretamente, trata doenças; a droga (como o cigarro) prejudica a saúde e pode viciar.'},
 
- // ---- 6 · Types of medicines ----
- {t:6,q:'It is a liquid medicine. You usually take it with a spoon. It is',o:['a syrup.','a tablet.','an ointment.','an inhaler.'],e:'<b>Syrup</b> = xarope, remédio líquido tomado com colher ou copinho medidor. Muito usado para tosse (cough syrup).'},
- {t:6,q:'Which type of medicine do you put <em>on your skin</em>?',o:['ointment','capsule','syrup','tablet'],e:'<b>Ointment</b> (pomada) e <b>cream</b> (creme) são aplicados na pele. Capsule, syrup e tablet são engolidos.'},
- {t:6,q:'It is small and solid. You swallow it with a glass of water. It is',o:['a tablet.','eye drops.','a cream.','an injection.'],e:'<b>Tablet</b> ou <b>pill</b> = comprimido. <b>Capsule</b> (cápsula) também é engolida, mas tem uma casca que se dissolve no estômago.'},
- {t:6,q:'People with asthma often use <em>___</em> to breathe better.',o:['an inhaler','an ointment','eye drops','a bandage'],e:'<b>Inhaler</b> = bombinha. O remédio é inalado e vai direto para os pulmões, por isso ajuda na respiração.'},
+ // ---- 6 · Reading: What are medicines? (p. 56) ----
+ {t:6,q:TXT_R1+'According to the text, many medicines',o:['are not totally synthetic: many come from nature.','are always made only in labs.','are made only from plants.','are all biologically engineered.'],e:'"Contrary to what people might think, many medicines are <b>not totally synthetic</b>." Alguns vêm da natureza, outros de bactérias modificadas e outros de laboratório.'},
+ {t:6,q:'In the glossary, <em>synthetic</em> means',o:['human-made, artificial.','found in nature.','a small amount of liquid.','medicine for external use.'],e:'Glossário: <b>synthetic</b> = human-made, artificial (feito pelo ser humano). O oposto é natural.'},
+ {t:6,q:TXT_R1+'According to the text, penicillin is a byproduct of',o:['organisms such as fungus.','bacteria with new genes.','chemicals mixed in a lab.','vitamins.'],e:'"Penicillin are byproducts of organisms such as <b>fungus</b>." A penicilina, primeiro antibiótico, veio de um fungo.'},
+ {t:6,q:TXT_R1+'Which substances can be used to make medicines?',o:['Plants, fungus, bacteria and chemicals.','Only plants.','Only chemicals.','Only vitamins.'],e:'O texto cita quatro origens: plantas (nature), fungos, bactérias modificadas (biologically engineered) e substâncias químicas misturadas em laboratório (labs).'},
 
- // ---- 7 · Understanding how medicines can affect the body ----
- {t:7,q:'<span class="txt">Medicines can have <b>side effects</b>: unwanted reactions such as feeling sleepy, having a headache or a stomachache.</span>A side effect is',o:['an unwanted reaction caused by a medicine.','the correct dose of a medicine.','the name of a pharmacy.','a type of vitamin.'],e:'<b>Side effect</b> = efeito colateral: uma reação que o remédio causa além do efeito desejado. Por isso é importante ler a bula e seguir a orientação médica.'},
- {t:7,q:'<span class="txt"><b>COUGH SYRUP</b><br>Dose: children (6–12 years): 10 ml, 3 times a day.<br>Do not take more than the recommended dose.<br>Expiry date: 08/2027</span>According to the label, an 8-year-old child should take',o:['10 ml three times a day.','3 ml ten times a day.','as much as he or she wants.','10 ml once a week.'],e:'Uma criança de 8 anos está na faixa de 6 a 12 anos: <b>10 ml, 3 times a day</b>. O rótulo avisa para não passar da dose recomendada.'},
- {t:7,q:'On a medicine label, the <em>expiry date</em> tells you',o:['the last day you can safely use the medicine.','the day the medicine was bought.','how many times a day to take it.','the name of the doctor.'],e:'<b>Expiry date</b> = data de validade. Depois dela, o remédio pode perder o efeito ou fazer mal.'},
- {t:7,q:'Why shouldn\'t you take a friend\'s medicine?',o:['A medicine that helps one person can be harmful to another.','Medicines are always very expensive.','Friends never get sick.','Tablets always taste bad.'],e:'Cada remédio é indicado para uma pessoa, uma doença e uma dose. O que ajuda um amigo pode causar reações em você.'},
+ // ---- 7 · Reading: Types of medicines (p. 56) ----
+ {t:7,q:'In the glossary, <em>pills</em> are',o:['small round medicines to be swallowed whole.','small amounts of liquid.','medicines for external use.','anti-bacterial medicines.'],e:'Glossário: <b>pills</b> = a small round medicine to be swallowed whole. "Small amount of liquid" são as <b>drops</b> (gotas).'},
+ {t:7,q:'<span class="txt">There are also medicines for <b>topical</b> use, such as creams, gels, and patches, as well as injections.</span>A <em>topical</em> medicine is',o:['a medicine for external use, like a cream.','a pill you swallow with water.','an injection.','a vaccine.'],e:'Glossário: <b>topical</b> = medicine for external use. Cremes, géis e adesivos (patches) vão na pele.'},
+ {t:7,q:'According to the text, <em>antibiotics</em> are the type of medicine that',o:['fights bacteria.','treats high blood pressure.','stops cancer cells from multiplying.','replaces missing vitamins.'],e:'"Antibiotics, the type of medicine that <b>fights bacteria</b> – almost everyone takes antibiotics when they have an infection." Glossário: anti-bacterial medicine.'},
+ {t:7,q:TXT_OTC+'Over-the-counter (OTC) medicines are medicines that',o:['you can buy without a prescription.','only doctors can use.','never cause side effects.','are always vaccines.'],e:'"To buy these medicines, there\'s <b>no need to have a prescription</b>." Exemplos do texto: painkillers e remédios para febre, tosse ou alergia.'},
 
- // ---- 8 · Text + After you read ----
- {t:8,q:TXT_MED+'The text expresses the main idea that',o:['medicines can help us, but they must be used correctly.','medicines are always dangerous.','children can take medicines alone.','sweets are better than medicines.'],e:'O texto mostra os dois lados: remédios ajudam (antibiotics, painkillers), mas o uso errado faz mal. A conclusão é seguir as instruções.'},
- {t:8,q:TXT_MED+'According to the text, painkillers',o:['reduce pain.','fight infections caused by bacteria.','are a kind of sweet.','cause infections.'],e:'"Painkillers reduce pain" = analgésicos reduzem a dor. Quem combate infecções por bactérias são os <b>antibiotics</b>.'},
- {t:8,q:TXT_MED+'The sentence "medicines are not sweets!" means that medicines',o:['must not be taken for fun or in any amount.','taste bad.','are made of sugar.','are sold in candy shops.'],e:'A frase compara remédio com doce para alertar: remédio não se toma por vontade nem em qualquer quantidade. O texto continua: "too much of it can hurt our body".'},
- {t:8,q:TXT_MED+'According to the text, children should take medicines',o:['with the help of an adult.','with a friend from school.','whenever they want.','without reading the label.'],e:'Última frase do texto: "Children should only take medicines with the help of an adult."'},
+ // ---- 8 · While / After you read + Culture (p. 57) ----
+ {t:8,q:TXT_OTC+'According to the text, we should be cautious with OTC medicines because',o:['if not taken correctly, they can cause side effects or serious consequences.','they are always fake.','they are very expensive.','they never work.'],e:'"Even so, we should be cautious, because if not taken correctly, they can also cause uncomfortable <b>side effects</b> or have serious consequences to our health."'},
+ {t:8,q:'Which sentence is <em>NOT</em> one of the text\'s main ideas?',o:['All medicines are made in labs by mixing chemicals.','Medicines come in many types, not only pills.','To buy some medicines, we should see a doctor first.','Some medicines are developed from substances found in nature.'],e:'O texto diz o contrário: muitos remédios <b>não</b> são totalmente sintéticos. As outras três frases estão na lista de ideias principais do While you read.'},
+ {t:8,q:'What should you do if you take a medicine and feel worse after taking it?',o:['Stop and talk to a doctor or a pharmacist.','Take a double dose.','Take a friend\'s medicine.','Ignore it and keep taking it.'],e:'Sentir-se pior pode ser um efeito colateral. O certo é procurar um profissional de saúde, que é quem prescreve a substância e a dose corretas.'},
+ {t:8,q:'<span class="txt"><b>Culture</b><br>Alternative medicine is a term that describes medical treatments that are used instead of traditional therapies. Techniques such as acupuncture, cupping therapy, and ayurvedic treatments started being used more than two thousand years ago.</span>Which is an example of alternative medicine?',o:['Acupuncture.','Antibiotics.','Vaccines.','Painkillers.'],e:'O boxe Culture cita acupuntura, ventosaterapia (cupping), ayurveda, homeopatia, fitoterapia (herbalism) e dieta. Antibióticos, vacinas e analgésicos são medicina tradicional.'},
 
- // ---- 9 · Language: should / shouldn't · imperative · frequency ----
- {t:9,q:'You have a high fever. You <em>___</em> see a doctor.',o:['should','shouldn\'t','are','does'],e:'<b>Should</b> dá conselho ou recomendação: "você deveria ir ao médico".'},
- {t:9,q:'You <em>___</em> take medicine without an adult\'s help.',o:['shouldn\'t','should','don\'t should','not should'],e:'A negativa de should é <b>should not</b> (shouldn\'t). Não se usa "don\'t" com should.'},
- {t:9,q:'Which sentence is correct?',o:['She should rest.','She shoulds rest.','She should to rest.','She should resting.'],e:'Depois de <b>should</b> vem o verbo na forma básica, sem "to" e sem -ing. E should não ganha -s com he/she/it.'},
- {t:9,q:'"Take this medicine <em>twice a day</em>." This means',o:['two times a day.','one time a day.','three times a day.','every two days.'],e:'Once = 1 vez; <b>twice</b> = 2 vezes; three times = 3 vezes. "Take" está no imperativo, típico de instruções.'},
+ // ---- 9 · Language: giving advice × giving a suggestion (p. 58–59) ----
+ {t:9,q:'"You <em>should</em> see a doctor." This sentence is',o:['giving advice.','giving a suggestion.','asking for information.','describing a routine.'],e:'<b>Should / shouldn\'t</b> + verbo = <b>advice</b> (conselho). É a primeira coluna da tabela do livro: "You should look for medical treatment."'},
+ {t:9,q:'"<em>Why don\'t you</em> try some alternative medicine?" This sentence is',o:['giving a suggestion.','giving advice.','giving an order.','making a complaint.'],e:'<b>Why don\'t you</b> + verbo? = <b>suggestion</b> (sugestão). Tem forma de pergunta, mas é uma sugestão.'},
+ {t:9,q:'Complete the suggestion: "Why <em>___</em> you stop smoking?"',o:['don\'t','doesn\'t','shouldn\'t','not'],e:'A estrutura da sugestão é fixa: <b>Why don\'t you</b> + verbo? Exemplos do livro: "Why don\'t you exercise more?"'},
+ {t:9,q:'Complete the advice: "She <em>___</em> self-medicate."',o:['shouldn\'t','doesn\'t should','don\'t','why don\'t'],e:'Conselho negativo = <b>shouldn\'t</b> + verbo: "She shouldn\'t self-medicate" (ela não deveria se automedicar). Não se usa do/does com should.'},
+ {t:9,q:'<span class="txt">Look at the picture: a girl has a terrible toothache.</span>What would you say to her?',o:['You should go to the dentist.','You should eat more sweets.','Why don\'t you play football?','You shouldn\'t tell your parents.'],e:'Como no exercício 7 do livro: identificar o problema (toothache) e dar um conselho adequado com <b>should</b>.'},
 
- // ---- 10 · Listening ----
- {t:10,a:AUD_DOC,q:'Listen to the conversation. What is Tom\'s problem?',o:['He has a headache and a fever.','He has a stomachache.','He has a broken arm.','He has a cough and a sore throat.'],e:'Tom diz: "I have a terrible <b>headache</b> and a <b>fever</b>." (dor de cabeça e febre).'},
- {t:10,a:AUD_DOC,q:'Listen again. How often should Tom take the medicine?',o:['Three times a day.','Once a day.','Twice a day.','Every hour.'],e:'O médico diz: "Take this medicine <b>three times a day</b>, and drink lots of water."'},
- {t:10,a:AUD_PHA,q:'Listen to the conversation at the pharmacy. What does the pharmacist recommend?',o:['A cough syrup.','Eye drops.','An ointment.','An inhaler.'],e:'O menino está com tosse (cough), e o farmacêutico diz: "Try this <b>cough syrup</b>."'},
- {t:10,a:AUD_PHA,q:'Listen again. When should the boy take the syrup?',o:['After meals.','Before breakfast only.','At night only.','Before meals.'],e:'O farmacêutico diz: "Give him five milliliters <b>after meals</b>" (depois das refeições).'}
+ // ---- 10 · Listening: interview with a doctor (p. 60) ----
+ {t:10,a:AUD_INT,q:'Listen to an interview with a doctor talking about the effects of medicines in the body. What title would you choose for this interview?',o:['Risks in self-medication','The advances of pharmacology','How to open a drugstore','Natural medicine recipes'],e:'O médico fala dos problemas de tomar remédio sem receita: <b>self-medication</b> (automedicação). O livro traz as duas primeiras opções.'},
+ {t:10,a:AUD_INT,q:'True or false? "A small number of patients have adverse effects from self-medication."',o:['False: a large number of patients have adverse effects.','True: only a few patients have problems.','False: nobody has adverse effects.','True: self-medication is always safe.'],e:'O médico diz: "a <b>large number</b> of patients have adverse effects because of it." Por isso a frase é falsa.'},
+ {t:10,a:AUD_INT,q:'According to the doctor, what does the bloodstream do?',o:['It carries the medicine to the sick organ after it\'s metabolised.','It destroys the medicine immediately.','It takes the medicine out of the body in one day.','It turns the medicine into vitamins.'],e:'"After the medicine is metabolised, the <b>bloodstream</b> carries it to the sick organ." <b>Bloodstream</b> = corrente sanguínea. Afirmação d do livro: true.'},
+ {t:10,a:AUD_INT,q:'According to the interview, a side effect means that',o:['a healthy part of the body might be harmed by the medicine.','the medicine works faster.','the medicine is natural.','the medicine is cheaper.'],e:'O remédio também pode chegar a partes saudáveis do corpo e prejudicá-las: isso é um <b>side effect</b>. Afirmação e do livro: true.'},
+ {t:10,a:AUD_INT,q:'True or false? "Medication drugs can never cause addiction."',o:['False: some medication drugs can cause addiction.','True: medicines never cause addiction.','True: only cigarettes cause addiction.','False: all medicines always cause addiction.'],e:'O médico diz: "Yes, some of them <b>can</b>." Por isso a frase é falsa e deve ser corrigida para "medication drugs <b>can</b> cause addiction".'}
 ];
 
 const $=s=>document.querySelector(s);

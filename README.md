@@ -1,6 +1,6 @@
 # English em Jogo
 
-Quiz de Inglês do 6º ano. 44 questões em 11 tópicos.
+Quiz de Inglês do 6º ano. 46 questões em 11 tópicos.
 
 **Prova (questões 21 a 25, Sistemática 3)**, 4 questões cada:
 
@@ -10,16 +10,16 @@ Quiz de Inglês do 6º ano. 44 questões em 11 tópicos.
 4. Ideia principal do texto
 5. Simple Present (rotina, hábito e verdade universal)
 
-**Unit 8 · What are medicines and drugs?** (temas de *Futures: project book, year 6*, Troika/Amais Educação, 2023; questões autorais), 4 questões cada:
+**Unit 8 · How are medicines produced?** (*Futures: project book, year 6*, Troika/Amais Educação, 2023, p. 52–61):
 
-6. What are medicines? (pharmacist, prescription, os sentidos de "drug")
-7. Types of medicines (syrup, tablet, capsule, ointment, inhaler)
-8. Understanding how medicines can affect the body (side effects, dose, expiry date)
-9. Text · After you read (texto "Medicines: friends or enemies?")
-10. Language (should / shouldn't, imperativo, once/twice/three times a day)
-11. Listening (áudio gerado pela voz do navegador em inglês, com transcrição depois da resposta)
+6. Video: What are medicines and drugs? (campanha antitabagismo, vício, drogas × remédios), 4 questões
+7. Reading: What are medicines? (synthetic, natureza, fungos, bactérias, labs), 4 questões
+8. Reading: Types of medicines (pills, drops, topical, antibiotics, over-the-counter), 4 questões
+9. After you read + Culture (ideias principais, cuidado com OTC, medicina alternativa), 4 questões
+10. Language: giving advice (should/shouldn't) × giving a suggestion (Why don't you...?), 5 questões
+11. Listening: entrevista com médico sobre automedicação (verdadeiro/falso do livro), 5 questões. O áudio foi recriado com a voz do navegador; a transcrição aparece depois da resposta.
 
-- Modos: Rápido (1 por tópico), Estudo (15 variadas) ou Completo (todas as 44)
+- Modos: Rápido (1 por tópico), Estudo (15 variadas) ou Completo (todas as 46)
 - Atalhos de conteúdo: Tudo, só Prova (21–25) ou só Unit 8
 - Explicação em português a cada resposta
 - Resultado por tópico e treino só dos tópicos com erro
