@@ -19,7 +19,10 @@ Quiz de Inglês do 6º ano. 46 questões em 11 tópicos.
 10. Language: giving advice (should/shouldn't) × giving a suggestion (Why don't you...?), 5 questões
 11. Listening: entrevista com médico sobre automedicação (verdadeiro/falso do livro), 5 questões. O áudio foi recriado com a voz do navegador; a transcrição aparece depois da resposta.
 
-- Modos: Rápido (1 por tópico), Estudo (15 variadas) ou Completo (todas as 46)
+- Tela inicial em formato de **trilha de missões**: botão "Jogar agora" (1 questão por tópico), um mundo por bloco de conteúdo (Prova, Unit 8) e uma parada por tópico
+- Estrelas por tópico (1 ⭐ a partir de 50%, 2 a partir de 75%, 3 com 100%), contadas quando o aluno faz a missão completa do tópico; aviso de "revisar" quando a última tentativa teve erro
+- Sequência de dias seguidos (🔥) e total de estrelas no topo. Tudo fica salvo só no navegador do aluno (localStorage), sem servidor e sem dados pessoais
+- Em "Mais opções": modos Rápido (1 por tópico), Estudo (15 variadas) ou Completo (todas as 46)
 - Atalhos de conteúdo: Tudo, só Prova (21–25) ou só Unit 8
 - Explicação em português a cada resposta
 - Resultado por tópico e treino só dos tópicos com erro
@@ -28,6 +31,10 @@ Quiz de Inglês do 6º ano. 46 questões em 11 tópicos.
 ## Deploy
 
 Site estático, sem build. Na Vercel: importe o repositório, Framework Preset **Other**, e faça o deploy. Cada push na `main` atualiza o site.
+
+## Nova unidade
+
+Acrescente os tópicos em `TOPICS`, o grupo em `GROUPS` e um item em `WORLDS` (nome, subtítulo, ícone e tópicos). A trilha ganha um novo mundo automaticamente.
 
 ## Editar questões
 

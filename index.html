@@ -61,7 +61,40 @@ button{font:inherit;color:inherit;cursor:pointer}
 .hero h1 .l2{color:var(--lime)}
 .tagline{font-family:var(--f-accent);font-style:italic;font-weight:800;font-size:clamp(1.15rem,3.6vw,1.5rem);line-height:1.2}
 .tagline b{color:var(--lime);font-weight:800}
-.lede{max-width:54ch;color:rgba(255,255,255,.92)}
+.hero .play{justify-self:start;background:#fff;color:var(--teal);font-size:1.3rem;padding:18px 34px;box-shadow:0 12px 26px -12px rgba(0,0,0,.45)}
+.hero .play:hover{filter:none;background:var(--lime);color:#1f2a10}
+.hudrow{display:flex;flex-wrap:wrap;gap:8px}
+.hudrow span{background:rgba(255,255,255,.16);border-radius:999px;padding:6px 14px;font-size:.92rem}
+
+/* ===== Trilha de missões ===== */
+.worlds{display:grid;gap:22px}
+.hint{font-size:.9rem;color:var(--muted);margin-top:-8px}
+.world{background:var(--card);border:1.5px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px 18px 10px}
+.wh{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;margin-bottom:6px}
+.wi{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:1.5rem;background:linear-gradient(115deg,var(--green),var(--teal))}
+.wh b{font-family:var(--f-accent);font-weight:800;font-size:1.15rem;display:block;line-height:1.2}
+.wh small{color:var(--muted);font-size:.85rem}
+.wp{font-family:var(--f-accent);font-weight:800;font-size:.95rem;color:var(--teal);background:var(--paper-2);padding:5px 12px;border-radius:999px;white-space:nowrap}
+.trail{list-style:none;margin:0;padding:0;position:relative}
+.trail::before{content:"";position:absolute;left:21px;top:26px;bottom:26px;border-left:3px dashed var(--line)}
+.stop{position:relative;width:100%;display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;text-align:left;background:none;border:0;padding:8px 0;border-radius:14px}
+.stop .node{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-accent);font-weight:800;background:var(--card);border:3px solid var(--aqua);color:var(--teal);transition:transform .15s}
+.stop.played .node{background:var(--teal);border-color:var(--teal);color:#fff}
+.stop.done .node{background:var(--lime);border-color:var(--lime);color:#1f2a10}
+.stop:hover .node{transform:scale(1.1)}
+.stop .nm{font-size:1rem;line-height:1.3}
+.stars{font-size:1.15rem;letter-spacing:1px;color:#E8B400;white-space:nowrap}
+.stars i{font-style:normal;color:var(--line)}
+.pulse{animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.08);opacity:.75}}
+.more{border-top:1px solid var(--line);padding-top:14px}
+.more>summary{cursor:pointer;color:var(--teal);font-size:.95rem;list-style:none;display:flex;gap:8px;align-items:center}
+.more>summary::-webkit-details-marker{display:none}
+.more>summary::before{content:"▸";transition:transform .15s}
+.more[open]>summary::before{transform:rotate(90deg)}
+.more-body{display:grid;gap:26px;margin-top:18px}
+.gain{display:flex;flex-wrap:wrap;gap:8px}
+.gain span{background:var(--paper-2);color:var(--teal);border-radius:999px;padding:6px 14px;font-size:.92rem}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center}
 .stat b{display:block;font-family:var(--f-accent);font-weight:800;font-size:clamp(2.2rem,8vw,3rem);line-height:1;color:var(--mint)}
 .stat span{font-size:.82rem;color:var(--muted)}
@@ -189,42 +222,45 @@ footer b{font-family:var(--f-accent);font-style:italic;font-weight:800;color:var
   <!-- INÍCIO -->
   <section id="start" class="block" style="gap:30px">
     <header class="hero">
-      <span class="label">Inglês · 6º ano · Prova 21–25 + Unit 8</span>
-      <h1><span>Onde o inglês</span><span class="l2">vira descoberta.</span></h1>
-      <p class="tagline">Leia, responda e <b>aprenda na hora.</b></p>
-      <p class="lede">Questões no modelo da prova e a <b>Unit 8: How are medicines produced?</b> do livro <i>Futures</i>: vídeo, leitura, advice × suggestion e listening com áudio. Cada resposta traz a explicação, e no final você descobre seu título.</p>
+      <h1><span>English</span><span class="l2">em Jogo</span></h1>
+      <p class="tagline">Pronto para a missão? 🚀</p>
+      <button class="btn play" id="playNow">▶ Jogar agora</button>
+      <div class="hudrow"><span id="streakTxt">🔥</span><span id="starsTotal">⭐</span></div>
     </header>
 
-    <div class="stats" aria-label="Resumo do quiz">
-      <div class="stat"><b id="statQ">46</b><span>questões</span></div>
-      <div class="stat"><b id="statT">11</b><span>tópicos</span></div>
-      <div class="stat"><b>3</b><span>modos</span></div>
-    </div>
-
     <div class="block">
-      <span class="label">1 · Escolha o modo</span>
-      <div class="modes" role="group" aria-label="Modo do quiz">
-        <button class="mode" id="m-rapido" data-mode="rapido" aria-pressed="true"><span class="n">~2 min</span><b>Rápido</b><small>1 questão por tópico</small></button>
-        <button class="mode" id="m-estudo" data-mode="estudo" aria-pressed="false"><span class="n">~7 min</span><b>Estudo</b><small>15 questões variadas</small></button>
-        <button class="mode" id="m-completo" data-mode="completo" aria-pressed="false"><span class="n">~20 min</span><b>Completo</b><small id="allCount">Todas as questões</small></button>
-      </div>
+      <span class="label">Trilha de missões</span>
+      <p class="hint">Toque numa parada para fazer a missão do tópico e ganhar até 3 ⭐.</p>
+      <div class="worlds" id="worlds"></div>
     </div>
 
-    <div class="block">
-      <div class="between"><span class="label">2 · Tópicos incluídos</span><button class="linkish" id="toggleAll">Desmarcar todos</button></div>
-      <div class="presets" role="group" aria-label="Atalhos de conteúdo">
-        <button class="preset" data-g="all" aria-pressed="true">Tudo</button>
-        <button class="preset" data-g="prova" aria-pressed="false">Prova (21–25)</button>
-        <button class="preset" data-g="unit8" aria-pressed="false">Unit 8 · Medicines</button>
+    <details class="more">
+      <summary>Mais opções · modos e tópicos</summary>
+      <div class="more-body">
+        <div class="block">
+          <span class="label">1 · Escolha o modo</span>
+          <div class="modes" role="group" aria-label="Modo do quiz">
+            <button class="mode" id="m-rapido" data-mode="rapido" aria-pressed="true"><span class="n">~2 min</span><b>Rápido</b><small>1 questão por tópico</small></button>
+            <button class="mode" id="m-estudo" data-mode="estudo" aria-pressed="false"><span class="n">~7 min</span><b>Estudo</b><small>15 questões variadas</small></button>
+            <button class="mode" id="m-completo" data-mode="completo" aria-pressed="false"><span class="n">~20 min</span><b>Completo</b><small id="allCount">Todas as questões</small></button>
+          </div>
+        </div>
+        <div class="block">
+          <div class="between"><span class="label">2 · Tópicos incluídos</span><button class="linkish" id="toggleAll">Desmarcar todos</button></div>
+          <div class="presets" role="group" aria-label="Atalhos de conteúdo">
+            <button class="preset" data-g="all" aria-pressed="true">Tudo</button>
+            <button class="preset" data-g="prova" aria-pressed="false">Prova (21–25)</button>
+            <button class="preset" data-g="unit8" aria-pressed="false">Unit 8 · Medicines</button>
+          </div>
+          <div class="chips" id="chips"></div>
+        </div>
+        <div class="cta">
+          <button class="btn" id="go">Começar</button>
+          <span class="record" id="count"></span>
+        </div>
+        <p class="record" id="best" hidden></p>
       </div>
-      <div class="chips" id="chips"></div>
-    </div>
-
-    <div class="cta">
-      <button class="btn" id="go">Começar</button>
-      <span class="record" id="count"></span>
-    </div>
-    <p class="record" id="best" hidden></p>
+    </details>
   </section>
 
   <!-- QUESTÃO -->
@@ -257,6 +293,7 @@ footer b{font-family:var(--f-accent);font-style:italic;font-weight:800;color:var
       </div>
       <div class="poster-body">
       <p class="desc" id="rDesc"></p>
+      <div class="gain" id="rGain"></div>
       <div class="block">
         <span class="label">Desempenho por tópico</span>
         <div class="topics" id="rTopics"></div>
@@ -266,7 +303,7 @@ footer b{font-family:var(--f-accent);font-style:italic;font-weight:800;color:var
     <div class="actions">
       <button class="btn alt" id="retryWeak">Treinar tópicos com erro</button>
       <button class="btn ghost" id="share">Copiar resultado</button>
-      <button class="linkish" id="again">Jogar de novo</button>
+      <button class="linkish" id="again">Voltar ao mapa</button>
     </div>
     <span class="toast" id="toast" aria-live="polite"></span>
   </section>
@@ -281,6 +318,10 @@ const TOPICS=[
  "U8 · Video: medicines and drugs","U8 · Reading: what are medicines?","U8 · Reading: types of medicines",
  "U8 · After you read · Culture","U8 · Language: advice × suggestion","U8 · Listening: doctor interview"];
 const GROUPS={prova:[0,1,2,3,4],unit8:[5,6,7,8,9,10]};
+// Trilha: cada mundo agrupa tópicos. Para uma nova unidade, acrescente um mundo aqui.
+const WORLDS=[
+ {name:"Prova",sub:"Questões 21 a 25",icon:"📝",topics:GROUPS.prova},
+ {name:"Unit 8",sub:"How are medicines produced?",icon:"💊",topics:GROUPS.unit8}];
 
 // Unit 8: trechos curtos do texto de leitura do livro (p. 56) e áudio da entrevista recriado para o quiz.
 const TXT_R1='<span class="txt"><b>What are medicines?</b><br>Contrary to what people might think, many medicines are not totally <b>synthetic</b>. Many are made of substances found in nature, like plants. Penicillin are byproducts of organisms such as fungus. And a few are even biologically engineered by inserting genes into bacteria that make them produce the desired substance. While others are made in <b>labs</b> by mixing together a number of chemicals.</span>';
@@ -372,14 +413,37 @@ document.querySelectorAll(".mode").forEach(b=>b.onclick=()=>{mode=b.dataset.mode
 const pool=ts=>Q.filter(q=>ts.has(q.t)).length;
 const sizeFor=(m,ts)=>m==="rapido"?ts.size:m==="estudo"?Math.min(15,pool(ts)):pool(ts);
 $("#allCount").textContent=`Todas as ${Q.length} questões`;
-$("#statQ").textContent=Q.length;$("#statT").textContent=TOPICS.length;
 function syncPresets(){const same=a=>a.length===selected.size&&a.every(i=>selected.has(i));
   document.querySelectorAll(".preset").forEach(b=>b.setAttribute("aria-pressed",b.dataset.g==="all"?selected.size===TOPICS.length:same(GROUPS[b.dataset.g])))}
 document.querySelectorAll(".preset").forEach(b=>b.onclick=()=>{const g=b.dataset.g==="all"?TOPICS.map((_,i)=>i):GROUPS[b.dataset.g];
   selected=new Set(g);document.querySelectorAll("#chips input").forEach(c=>{c.checked=selected.has(+c.dataset.i)});updateCount()});
 function updateCount(){const n=sizeFor(mode,selected);$("#count").textContent=n?`${n} questões`:"Selecione ao menos 1 tópico";$("#go").disabled=!n;$("#toggleAll").textContent=selected.size<TOPICS.length?"Marcar todos":"Desmarcar todos";syncPresets()}
 function showBest(){const b=store.get("eej-best");const el=$("#best");if(b){el.hidden=false;el.textContent=`Seu recorde: ${b.pct}% · ${b.title}`}}
-updateCount();showBest();
+/* ---------- Trilha, estrelas e sequência (salvos só neste navegador) ---------- */
+const short=t=>TOPICS[t].replace(/^U\d+ · /,"");
+const tsize=t=>Q.filter(q=>q.t===t).length;
+const starsOf=p=>p>=100?3:p>=75?2:p>=50?1:0;
+const dkey=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+const today=()=>dkey(new Date()), yesterday=()=>{const d=new Date();d.setDate(d.getDate()-1);return dkey(d)};
+function streakNow(){const s=store.get("eej-streak");if(!s)return{count:0,played:false};
+  if(s.last===today())return{count:s.count,played:true};if(s.last===yesterday())return{count:s.count,played:false};return{count:0,played:false}}
+function bumpStreak(){const s=store.get("eej-streak");let c=1;if(s){if(s.last===today())c=s.count;else if(s.last===yesterday())c=s.count+1}
+  store.set("eej-streak",{last:today(),count:c});return c}
+const plural=(n,a,b)=>`${n} ${n>1?b:a}`;
+function renderMap(){
+  const T=store.get("eej-topics")||{};let total=0;
+  $("#worlds").innerHTML=WORLDS.map((w,wi)=>{let ws=0;
+    const stops=w.topics.map((t,k)=>{const r=T[t]||{},s=r.best!=null?starsOf(r.best):0;ws+=s;const rev=r.last!=null&&r.last<100;
+      return `<li><button class="stop ${s===3?"done":r.plays?"played":""}" data-t="${t}" aria-label="${short(t)}: ${s} de 3 estrelas"><span class="node">${s===3?"✓":k+1}</span><span class="nm">${short(t)}${rev?'<span class="tag pulse">revisar</span>':""}</span><span class="stars" aria-hidden="true">${"★".repeat(s)}<i>${"★".repeat(3-s)}</i></span></button></li>`}).join("");
+    total+=ws;const max=w.topics.length*3;
+    return `<section class="world"><header class="wh"><span class="wi" aria-hidden="true">${w.icon}</span><div><b>Mundo ${wi+1} · ${w.name}</b><small>${w.sub}</small></div><span class="wp">${ws===max?"🏅":"⭐"} ${ws}/${max}</span></header><ol class="trail">${stops}</ol></section>`}).join("");
+  $("#starsTotal").textContent=`⭐ ${total}/${TOPICS.length*3} estrelas`;
+  const st=streakNow();
+  $("#streakTxt").textContent=st.count?`🔥 ${plural(st.count,"dia seguido","dias seguidos")}${st.played?"":" · jogue hoje!"}`:"🔥 Comece sua sequência hoje";
+}
+$("#worlds").addEventListener("click",e=>{const b=e.target.closest(".stop");if(b)start(new Set([+b.dataset.t]),"completo")});
+$("#playNow").onclick=()=>start(new Set(TOPICS.map((_,i)=>i)),"rapido");
+updateCount();showBest();renderMap();
 
 /* ---------- Quiz ---------- */
 function build(topics,m){
@@ -389,11 +453,12 @@ function build(topics,m){
   while(d.length<max){let added=false;for(const p of pools){if(round<per&&p[round]&&d.length<max){d.push(p[round]);added=true}}if(!added)break;round++}
   return shuffle(d).map(q=>({...q,opts:shuffle(q.o)}));
 }
-function start(topics,m){deck=build(topics,m);idx=0;answers=[];streak=0;
+let runMode="rapido";
+function start(topics,m){runMode=m;deck=build(topics,m);idx=0;answers=[];streak=0;
   $("#pips").innerHTML=deck.map(()=>'<span class="pip"></span>').join("");show("quiz");render()}
 $("#go").onclick=()=>start(selected,mode);
 
-function show(id){["start","quiz","result"].forEach(s=>$("#"+s).hidden=s!==id);window.scrollTo({top:0})}
+function show(id){["start","quiz","result"].forEach(s=>$("#"+s).hidden=s!==id);if(id==="start")renderMap();window.scrollTo({top:0})}
 function render(){
   const q=deck[idx];locked=false;
   $("#qTopic").textContent=TOPICS[q.t];
@@ -460,6 +525,14 @@ function finish(){
   const by={};answers.forEach(a=>{by[a.t]=by[a.t]||{h:0,n:0};by[a.t].n++;if(a.ok)by[a.t].h++});
   const weak=Object.keys(by).filter(t=>by[t].h<by[t].n).map(Number);
   last={hit,total,pct,title,weak};
+  // estrelas: só contam quando todas as questões do tópico foram feitas na partida (missão completa)
+  const T=store.get("eej-topics")||{},gains=[];
+  Object.keys(by).map(Number).forEach(t=>{const r=by[t],p=Math.round(r.h/r.n*100),o=T[t]||{plays:0};o.plays=(o.plays||0)+1;o.last=p;
+    if(r.n>=tsize(t)){const before=o.best!=null?starsOf(o.best):0;if(o.best==null||p>o.best)o.best=p;const after=starsOf(o.best);
+      if(after>before)gains.push(`${short(t)} ${"★".repeat(after)}`)}T[t]=o});
+  store.set("eej-topics",T);
+  const sc=bumpStreak();
+  $("#rGain").innerHTML=`<span>🔥 ${plural(sc,"dia seguido","dias seguidos")}</span>`+(gains.length?`<span>Novas estrelas: ${gains.join(" · ")}</span>`:(runMode!=="completo"?'<span>Toque numa parada da trilha para ganhar ⭐</span>':""));
   const best=store.get("eej-best"),isRecord=!best||pct>best.pct;
   if(isRecord&&total>=5)store.set("eej-best",{pct,title});
   $("#rScore").innerHTML=`${pct}%<small>${hit} de ${total} acertos${isRecord&&best?" · novo recorde!":""}</small>`;
