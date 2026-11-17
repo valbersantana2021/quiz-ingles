@@ -19,7 +19,8 @@ Quiz de Inglês do 6º ano. 46 questões em 11 tópicos.
 10. Language: giving advice (should/shouldn't) × giving a suggestion (Why don't you...?), 5 questões
 11. Listening: entrevista com médico sobre automedicação (verdadeiro/falso do livro), 5 questões. O áudio foi recriado com a voz do navegador; a transcrição aparece depois da resposta.
 
-- Tela inicial em formato de **trilha de missões**: botão "Jogar agora" (1 questão por tópico), um mundo por bloco de conteúdo (Prova, Unit 8) e uma parada por tópico
+- Tela inicial **Aprender**: botão "Jogar agora" (1 questão por tópico) e um **card por mundo** (Prova, Unit 8) com % de tópicos concluídos (1 ⭐ ou mais), estrelas e selo Novo / Em andamento / Concluído (3 ⭐ em todos). Filtros Todos, Em andamento e Concluídos
+- Ao tocar no card abre a **trilha do mundo** (`#/mundo/prova`, `#/mundo/unit8`): serpentina no computador, zigue-zague no celular, uma parada por tópico, "Você está aqui" na próxima missão sugerida e troféu no fim. Nenhuma parada é bloqueada. O botão voltar do navegador funciona e o link da trilha pode ser enviado direto para a turma
 - Estrelas por tópico (1 ⭐ a partir de 50%, 2 a partir de 75%, 3 com 100%), contadas quando o aluno faz a missão completa do tópico; aviso de "revisar" quando a última tentativa teve erro
 - Sequência de dias seguidos (🔥) e total de estrelas no topo. Tudo fica salvo só no navegador do aluno (localStorage), sem servidor e sem dados pessoais
 - Em "Mais opções": modos Rápido (1 por tópico), Estudo (15 variadas) ou Completo (todas as 46)
@@ -34,7 +35,7 @@ Site estático, sem build. Na Vercel: importe o repositório, Framework Preset *
 
 ## Nova unidade
 
-Acrescente os tópicos em `TOPICS`, o grupo em `GROUPS` e um item em `WORLDS` (nome, subtítulo, ícone e tópicos). A trilha ganha um novo mundo automaticamente.
+Acrescente os tópicos em `TOPICS`, o grupo em `GROUPS` e um item em `WORLDS` (`id` usado no link, nome, subtítulo, ícone de `ICO`, cor do card e tópicos). O início ganha um card novo e a trilha dele é montada automaticamente.
 
 ## Editar questões
 
