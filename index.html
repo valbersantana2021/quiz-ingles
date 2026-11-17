@@ -66,24 +66,74 @@ button{font:inherit;color:inherit;cursor:pointer}
 .hudrow{display:flex;flex-wrap:wrap;gap:8px}
 .hudrow span{background:rgba(255,255,255,.16);border-radius:999px;padding:6px 14px;font-size:.92rem}
 
-/* ===== Trilha de missões ===== */
-.worlds{display:grid;gap:22px}
-.hint{font-size:.9rem;color:var(--muted);margin-top:-8px}
-.world{background:var(--card);border:1.5px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px 18px 10px}
-.wh{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;margin-bottom:6px}
-.wi{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:1.5rem;background:linear-gradient(115deg,var(--green),var(--teal))}
-.wh b{font-family:var(--f-accent);font-weight:800;font-size:1.15rem;display:block;line-height:1.2}
-.wh small{color:var(--muted);font-size:.85rem}
-.wp{font-family:var(--f-accent);font-weight:800;font-size:.95rem;color:var(--teal);background:var(--paper-2);padding:5px 12px;border-radius:999px;white-space:nowrap}
-.trail{list-style:none;margin:0;padding:0;position:relative}
-.trail::before{content:"";position:absolute;left:21px;top:26px;bottom:26px;border-left:3px dashed var(--line)}
-.stop{position:relative;width:100%;display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;text-align:left;background:none;border:0;padding:8px 0;border-radius:14px}
-.stop .node{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-accent);font-weight:800;background:var(--card);border:3px solid var(--aqua);color:var(--teal);transition:transform .15s}
-.stop.played .node{background:var(--teal);border-color:var(--teal);color:#fff}
-.stop.done .node{background:var(--lime);border-color:var(--lime);color:#1f2a10}
-.stop:hover .node{transform:scale(1.1)}
-.stop .nm{font-size:1rem;line-height:1.3}
-.stars{font-size:1.15rem;letter-spacing:1px;color:#E8B400;white-space:nowrap}
+/* ===== Aprender: um card por mundo ===== */
+.sect{font-family:var(--f-accent);font-weight:800;font-size:clamp(1.5rem,4.5vw,1.9rem);line-height:1.1}
+.hint{font-size:.9rem;color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filter{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;padding:8px 14px;font-size:.9rem;min-height:44px}
+.filter b{font-size:.75rem;font-weight:400;background:var(--paper-2);border-radius:999px;padding:1px 8px}
+.filter[aria-pressed="true"]{border-color:var(--green);background:var(--paper-2);color:var(--ink)}
+.filter[aria-pressed="true"] b{background:var(--card)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.wcard{display:flex;flex-direction:column;text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);padding:0;transition:transform .15s,border-color .15s}
+.wcard:hover{transform:translateY(-3px);border-color:var(--aqua)}
+.banner{position:relative;height:118px;display:grid;place-items:center;overflow:hidden;color:#fff}
+.banner::before,.banner::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.1)}
+.banner::before{width:140px;height:140px;left:-34px;top:-44px}
+.banner::after{width:160px;height:160px;right:-24px;bottom:-70px}
+.banner svg{position:relative;width:50px;height:50px}
+.badge{position:absolute;z-index:1;top:12px;right:14px;font-family:var(--f-accent);font-weight:800;font-size:.72rem;letter-spacing:.05em;padding:4px 10px;border-radius:999px;background:#fff;color:#0C5A50}
+.badge.ok{background:var(--lime);color:#1f2a10}
+.cbody{padding:18px 20px 20px;display:grid;gap:10px}
+.cbody>b{font-family:var(--f-accent);font-weight:800;font-size:1.25rem;line-height:1.2}
+.cbody small{color:var(--muted);font-size:.88rem;display:block;font-weight:400;font-family:var(--f-body)}
+.bar{display:flex;align-items:center;gap:10px}
+.bar>span{flex:1;height:10px;background:var(--paper-2);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:999px;background:var(--green)}
+.bar.ok i{background:var(--lime)}
+.bar b{font-family:var(--f-accent);font-weight:800;font-size:.95rem;min-width:3.2em;text-align:right}
+.cmeta{display:flex;justify-content:space-between;gap:8px;font-size:.88rem;color:var(--muted)}
+.gold{color:#8A6A00;white-space:nowrap}
+:root[data-theme="dark"] .gold{color:#E8B400}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .gold{color:#E8B400}}
+.go{font-family:var(--f-accent);font-weight:800;color:var(--teal)}
+
+/* ===== Trilha do mundo ===== */
+.whead{background:var(--card);border:1.5px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:18px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.wico{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;flex-shrink:0;color:#fff}
+.wico svg{width:30px;height:30px}
+.winfo{flex:1 1 260px;display:grid;gap:8px;min-width:0}
+.winfo h2{font-family:var(--f-accent);font-weight:800;font-size:clamp(1.3rem,4vw,1.6rem);line-height:1.15}
+.winfo .cmeta{justify-content:flex-start;flex-wrap:wrap;gap:4px 12px}
+.btn.cont{font-family:var(--f-accent);font-weight:800;letter-spacing:.04em;display:inline-flex;align-items:center;gap:10px;box-shadow:0 6px 0 -1px #1F7A40}
+.btn.cont svg{width:14px;height:14px}
+.map{position:relative;border-radius:22px;border:1.5px solid var(--line);background:var(--paper-2);overflow:hidden}
+.map>svg{position:absolute;left:0;top:0;pointer-events:none}
+.road{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.road.bg{stroke:var(--line)} .road.on{stroke:var(--green)} .road.dash{stroke:var(--card);stroke-dasharray:12 11;opacity:.85}
+.stop{position:absolute;display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;text-align:center}
+.stop.col{flex-direction:column}
+.stop.rev{flex-direction:row-reverse;text-align:right}
+.stop.row{text-align:left}
+.dot{flex-shrink:0;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;border:4px solid var(--card);background:var(--card);color:var(--teal);
+  font-family:var(--f-accent);font-weight:800;font-size:1.35rem;box-shadow:0 5px 0 var(--line);transition:transform .15s}
+.dot svg{width:28px;height:28px}
+.stop:hover .dot{transform:scale(1.08)}
+.s-new .dot{border-color:var(--aqua)}
+.s-tried .dot{border-color:var(--teal)}
+.s-pass .dot{background:var(--teal);color:#fff;box-shadow:0 5px 0 #08666B}
+.s-done .dot{background:var(--lime);color:#1f2a10;box-shadow:0 5px 0 #9AAA10}
+.s-cur .dot{width:76px;height:76px;background:var(--cta);color:#fff;box-shadow:0 6px 0 #1F7A40;animation:ring 1.6s ease-in-out infinite}
+.s-cur .dot svg{width:32px;height:32px}
+@keyframes ring{50%{box-shadow:0 6px 0 #1F7A40,0 0 0 12px color-mix(in srgb,var(--green) 22%,transparent)}}
+.s-trophy .dot{width:72px;height:72px;background:var(--line);color:var(--muted);box-shadow:0 5px 0 color-mix(in srgb,var(--line) 70%,#000)}
+.s-trophy.won .dot{background:var(--lime);color:#1f2a10;box-shadow:0 5px 0 #9AAA10}
+.lbl{display:grid;gap:2px;background:var(--card);border-radius:12px;padding:7px 10px;box-shadow:0 4px 14px -8px rgba(12,90,80,.45);font-size:.82rem;color:var(--muted);min-width:0}
+.lbl b{font-family:var(--f-accent);font-weight:800;font-size:.92rem;line-height:1.25;color:var(--ink)}
+.s-cur .lbl{border:2px solid var(--green)}
+.here{justify-self:start;font-family:var(--f-accent);font-weight:800;font-size:.7rem;color:#fff;background:var(--bad);border-radius:999px;padding:2px 9px}
+.stop.col .here{justify-self:center}.stop.rev .here{justify-self:end}
+.stars{font-size:1rem;letter-spacing:1px;color:#E8B400;white-space:nowrap}
 .stars i{font-style:normal;color:var(--line)}
 .pulse{animation:pulse 1.6s ease-in-out infinite}
 @keyframes pulse{50%{transform:scale(1.08);opacity:.75}}
@@ -234,10 +284,13 @@ footer b{font-family:var(--f-accent);font-style:italic;font-weight:800;color:var
       <div class="hudrow"><span id="streakTxt">🔥</span><span id="starsTotal">⭐</span></div>
     </header>
 
-    <div class="block">
-      <span class="label">Trilha de missões</span>
-      <p class="hint">Toque numa parada para fazer a missão do tópico e ganhar até 3 ⭐.</p>
-      <div class="worlds" id="worlds"></div>
+    <div class="block" style="gap:18px">
+      <div class="between">
+        <h2 class="sect">Aprender</h2>
+        <div class="filters" id="filters" role="group" aria-label="Filtrar mundos"></div>
+      </div>
+      <div class="cards" id="cards"></div>
+      <p class="hint" id="cardsEmpty" hidden></p>
     </div>
 
     <details class="more">
@@ -273,10 +326,18 @@ footer b{font-family:var(--f-accent);font-style:italic;font-weight:800;color:var
     </details>
   </section>
 
+  <!-- TRILHA DE UM MUNDO -->
+  <section id="world" class="block" style="gap:18px" hidden>
+    <button class="back" id="home" style="justify-self:start">← Início</button>
+    <header class="whead" id="wHead"></header>
+    <p class="hint">Toque numa parada para fazer a missão do tópico e ganhar até 3 ⭐. Todas ficam liberadas.</p>
+    <div class="map" id="map"></div>
+  </section>
+
   <!-- QUESTÃO -->
   <section id="quiz" class="block" style="gap:18px" hidden>
     <div class="hud">
-      <div class="hud-l"><button class="back" id="exit" aria-label="Voltar para a tela principal">← Mapa</button><span class="label" id="qNum"></span></div>
+      <div class="hud-l"><button class="back" id="exit" aria-label="Sair da missão">← Início</button><span class="label" id="qNum"></span></div>
       <span class="streak" id="streak" hidden></span>
     </div>
     <div class="pips" id="pips" aria-hidden="true"></div>
@@ -288,7 +349,7 @@ footer b{font-family:var(--f-accent);font-style:italic;font-weight:800;color:var
       <div class="feedback" id="fb" hidden></div>
     </article>
     <div class="foot">
-      <span class="keys"><kbd>1</kbd>–<kbd>4</kbd> responde · <kbd>Enter</kbd> avança · <kbd>Esc</kbd> volta ao mapa</span>
+      <span class="keys"><kbd>1</kbd>–<kbd>4</kbd> responde · <kbd>Enter</kbd> avança · <kbd>Esc</kbd> sai da missão</span>
       <button class="btn" id="next" hidden>Próxima</button>
     </div>
   </section>
@@ -328,10 +389,11 @@ const TOPICS=[
  "U8 · Video: medicines and drugs","U8 · Reading: what are medicines?","U8 · Reading: types of medicines",
  "U8 · After you read · Culture","U8 · Language: advice × suggestion","U8 · Listening: doctor interview"];
 const GROUPS={prova:[0,1,2,3,4],unit8:[5,6,7,8,9,10]};
-// Trilha: cada mundo agrupa tópicos. Para uma nova unidade, acrescente um mundo aqui.
+// Cada mundo vira um card no início e uma trilha própria (#/mundo/<id>). Para uma nova unidade, acrescente um mundo aqui.
+// ico: chave de ICO; color: cor do card.
 const WORLDS=[
- {name:"Prova",sub:"Questões 21 a 25",icon:"📝",topics:GROUPS.prova},
- {name:"Unit 8",sub:"How are medicines produced?",icon:"💊",topics:GROUPS.unit8}];
+ {id:"prova",name:"Prova",sub:"Questões 21 a 25",ico:"prova",color:"var(--teal)",topics:GROUPS.prova},
+ {id:"unit8",name:"Unit 8",sub:"How are medicines produced?",ico:"pill",color:"var(--cta)",topics:GROUPS.unit8}];
 
 // Unit 8: trechos curtos do texto de leitura do livro (p. 56) e áudio da entrevista recriado para o quiz.
 const TXT_R1='<span class="txt"><b>What are medicines?</b><br>Contrary to what people might think, many medicines are not totally <b>synthetic</b>. Many are made of substances found in nature, like plants. Penicillin are byproducts of organisms such as fungus. And a few are even biologically engineered by inserting genes into bacteria that make them produce the desired substance. While others are made in <b>labs</b> by mixing together a number of chemicals.</span>';
@@ -440,23 +502,111 @@ function streakNow(){const s=store.get("eej-streak");if(!s)return{count:0,played
 function bumpStreak(){const s=store.get("eej-streak");let c=1;if(s){if(s.last===today())c=s.count;else if(s.last===yesterday())c=s.count+1}
   store.set("eej-streak",{last:today(),count:c});return c}
 const plural=(n,a,b)=>`${n} ${n>1?b:a}`;
-function renderMap(){
-  const T=store.get("eej-topics")||{};let total=0;
-  $("#worlds").innerHTML=WORLDS.map((w,wi)=>{let ws=0;
-    const stops=w.topics.map((t,k)=>{const r=T[t]||{},s=r.best!=null?starsOf(r.best):0;ws+=s;const rev=r.last!=null&&r.last<100;
-      return `<li><button class="stop ${s===3?"done":r.plays?"played":""}" data-t="${t}" aria-label="${short(t)}: ${s} de 3 estrelas"><span class="node">${s===3?"✓":k+1}</span><span class="nm">${short(t)}${rev?'<span class="tag pulse">revisar</span>':""}</span><span class="stars" aria-hidden="true">${"★".repeat(s)}<i>${"★".repeat(3-s)}</i></span></button></li>`}).join("");
-    total+=ws;const max=w.topics.length*3;
-    return `<section class="world"><header class="wh"><span class="wi" aria-hidden="true">${w.icon}</span><div><b>Mundo ${wi+1} · ${w.name}</b><small>${w.sub}</small></div><span class="wp">${ws===max?"🏅":"⭐"} ${ws}/${max}</span></header><ol class="trail">${stops}</ol></section>`}).join("");
+const SVG=(d,fill)=>`<svg viewBox="0 0 24 24" ${fill?'fill="currentColor"':'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"'} aria-hidden="true">${d}</svg>`;
+const ICO={
+ check:SVG('<path d="M5 12l5 5 9-10" stroke-width="3"/>'),
+ play:SVG('<path d="M8 5l11 7-11 7z"/>',1),
+ trophy:SVG('<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>'),
+ prova:SVG('<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 11l2 2 4-4M9 17h6"/>'),
+ pill:SVG('<path d="M10.5 20.5a5 5 0 0 1-7-7l6-6a5 5 0 0 1 7 7z"/><path d="M8.5 8.5l7 7"/>')};
+const topicState=()=>store.get("eej-topics")||{};
+// Progresso de um mundo: tópico concluído = 1 ⭐ ou mais; mundo concluído = 3 ⭐ em todos os tópicos
+function wstats(w,T){
+  const s=w.topics.map(t=>{const r=T[t]||{};return r.best!=null?starsOf(r.best):0});
+  const n=w.topics.length,stars=s.reduce((a,b)=>a+b,0),done=s.filter(x=>x>0).length;
+  // próxima missão sugerida: 1º tópico sem estrela; se todos têm, o 1º sem 3 estrelas; -1 = mundo dominado
+  let cur=s.findIndex(x=>x===0);if(cur<0)cur=s.findIndex(x=>x<3);
+  return {s,n,stars,max:n*3,done,pct:Math.round(done/n*100),played:w.topics.some(t=>(T[t]||{}).plays),mastered:stars===n*3,cur}}
+function renderHud(){
+  const T=topicState(),total=WORLDS.reduce((a,w)=>a+wstats(w,T).stars,0);
   $("#starsTotal").textContent=`⭐ ${total}/${TOPICS.length*3} estrelas`;
   const st=streakNow();
   $("#streakTxt").textContent=st.count?`🔥 ${plural(st.count,"dia seguido","dias seguidos")}${st.played?"":" · jogue hoje!"}`:"🔥 Comece sua sequência hoje";
 }
-$("#worlds").addEventListener("click",e=>{const b=e.target.closest(".stop");if(b)start(new Set([+b.dataset.t]),"completo")});
+
+/* ---------- Início: um card por mundo ---------- */
+let filter="all";
+const FILTERS=[["all","Todos"],["prog","Em andamento"],["done","Concluídos"]];
+function renderHome(){
+  renderHud();const T=topicState();
+  const list=WORLDS.map((w,wi)=>({w,wi,st:wstats(w,T)}));
+  const cnt={all:list.length,prog:list.filter(x=>!x.st.mastered).length,done:list.filter(x=>x.st.mastered).length};
+  $("#filters").innerHTML=FILTERS.map(([k,l])=>`<button class="filter" data-f="${k}" aria-pressed="${filter===k}">${l} <b>${cnt[k]}</b></button>`).join("");
+  // em andamento primeiro, depois os não iniciados, concluídos por último
+  const rank=x=>x.st.mastered?2:x.st.played?0:1;
+  const shown=list.filter(x=>filter==="all"||(filter==="done")===x.st.mastered).sort((a,b)=>rank(a)-rank(b)||a.wi-b.wi);
+  $("#cards").innerHTML=shown.map(({w,wi,st})=>{
+    const badge=st.mastered?'<span class="badge ok">CONCLUÍDO</span>':`<span class="badge">${st.played?"EM ANDAMENTO":"NOVO"}</span>`;
+    const go=st.mastered?"Ver trilha":st.played?"Continuar trilha":"Começar trilha";
+    return `<button class="wcard" data-w="${w.id}" aria-label="Mundo ${wi+1}, ${w.name}: ${st.done} de ${st.n} tópicos concluídos, ${st.stars} de ${st.max} estrelas">`+
+      `<span class="banner" style="background:${w.color}">${badge}${ICO[w.ico]}</span>`+
+      `<span class="cbody"><b>Mundo ${wi+1} · ${w.name}<small>${w.sub} · ${st.n} tópicos</small></b>`+
+      `<span class="bar${st.mastered?" ok":""}"><span><i style="width:${st.pct}%"></i></span><b>${st.pct}%</b></span>`+
+      `<span class="cmeta"><span>${st.done} de ${st.n} tópicos concluídos</span><span class="gold">★ ${st.stars}/${st.max}</span></span>`+
+      `<span class="go">${go} →</span></span></button>`}).join("");
+  const e=$("#cardsEmpty");e.hidden=!!shown.length;
+  e.textContent=filter==="done"?"Nenhum mundo concluído ainda. Conquiste 3 ⭐ em todos os tópicos de um mundo.":"Todos os mundos estão concluídos. Mandou bem!";
+}
+$("#filters").addEventListener("click",e=>{const b=e.target.closest(".filter");if(b){filter=b.dataset.f;renderHome()}});
+$("#cards").addEventListener("click",e=>{const b=e.target.closest(".wcard");if(b)location.hash="#/mundo/"+b.dataset.w});
+
+/* ---------- Trilha de um mundo (serpentina no computador, zigue-zague no celular) ---------- */
+let curWorld=null;
+function renderWorld(){
+  const w=curWorld,wi=WORLDS.indexOf(w),T=topicState(),st=wstats(w,T);
+  $("#wHead").innerHTML=`<span class="wico" style="background:${w.color}">${ICO[w.ico]}</span>`+
+    `<div class="winfo"><h2>Mundo ${wi+1} · ${w.name}</h2><div class="cmeta"><span>${w.sub}</span><span>${st.done} de ${st.n} tópicos</span><span class="gold">★ ${st.stars}/${st.max}</span></div>`+
+    `<div class="bar${st.mastered?" ok":""}"><span><i style="width:${st.pct}%"></i></span><b>${st.pct}%</b></div></div>`+
+    `<button class="btn cont" id="cont">${ICO.play}${st.cur<0?"REVISAR":"CONTINUAR"}</button>`;
+  $("#cont").onclick=()=>st.cur<0?start(new Set(w.topics),"estudo"):start(new Set([w.topics[st.cur]]),"completo");
+  drawMap(w,T,st);
+}
+function drawMap(w,T,st){
+  const box=$("#map"),W=box.clientWidth;if(!W)return;
+  const n=w.topics.length,N=n+1,wide=W>=600,P=[];let H,lw=0;
+  if(wide){const cols=W>=860?5:4,pad=70,cw=(W-2*pad)/cols,rh=190,top=66;lw=Math.min(cw-14,190);
+    for(let i=0;i<N;i++){const r=Math.floor(i/cols),c=i%cols;P.push({x:pad+cw*((r%2?cols-1-c:c)+.5),y:top+r*rh})}
+    H=top+(Math.ceil(N/cols)-1)*rh+160}
+  else{for(let i=0;i<N;i++)P.push({x:i===n?W/2:(i%2?W-56:56),y:60+i*118});H=60+n*118+110}
+  const seg=(a,b)=>{if(a.y===b.y)return ` L${b.x} ${b.y}`;
+    if(wide){const k=(a.x>W/2?1:-1)*80;return ` C${a.x+k} ${a.y} ${b.x+k} ${b.y} ${b.x} ${b.y}`}
+    const m=(b.y-a.y)/2;return ` C${a.x} ${a.y+m} ${b.x} ${b.y-m} ${b.x} ${b.y}`};
+  const path=k=>{let d=`M${P[0].x} ${P[0].y}`;for(let i=1;i<=k;i++)d+=seg(P[i-1],P[i]);return d};
+  const sw=wide?26:22,upto=st.cur<0?N-1:st.cur;
+  const place=(i,R)=>{const p=P[i];
+    if(wide)return {cls:"col",css:`left:${p.x-lw/2}px;top:${p.y-R}px;width:${lw}px`};
+    if(i===n)return {cls:"col",css:`left:${W/2-110}px;top:${p.y-R}px;width:220px`};
+    return p.x<W/2?{cls:"row",css:`left:${p.x-R}px;top:${p.y-R}px;width:${W-(p.x-R)-10}px`}
+                  :{cls:"rev",css:`left:10px;top:${p.y-R}px;width:${p.x+R-10}px`}};
+  const stops=w.topics.map((t,i)=>{
+    const r=T[t]||{},s=st.s[i],isCur=i===st.cur,rev=r.last!=null&&r.last<100;
+    const cls=isCur?"s-cur":s===3?"s-done":s>0?"s-pass":r.plays?"s-tried":"s-new";
+    const {cls:lay,css}=place(i,isCur?38:31);
+    const sub=isCur&&!s?`<span style="color:var(--teal)">Jogar · ${plural(tsize(t),"questão","questões")}</span>`
+      :`<span><span class="stars" aria-hidden="true">${"★".repeat(s)}<i>${"★".repeat(3-s)}</i></span>${rev?'<span class="tag pulse">revisar</span>':""}</span>`;
+    return `<button class="stop ${lay} ${cls}" style="${css}" data-t="${t}" aria-label="${short(t)}: ${s} de 3 estrelas${isCur?", próxima missão":""}${rev?", revisar":""}">`+
+      `<span class="dot">${isCur?ICO.play:s>0?ICO.check:i+1}</span>`+
+      `<span class="lbl">${isCur?'<span class="here">Você está aqui</span>':""}<b>${short(t)}</b>${sub}</span></button>`}).join("");
+  const tp=place(n,36);
+  const trophy=`<div class="stop ${tp.cls} s-trophy${st.mastered?" won":""}" style="${tp.css}"><span class="dot">${ICO.trophy}</span>`+
+    `<span class="lbl"><b>Troféu · ${w.name}</b>${st.mastered?"Conquistado!":"3 ★ em todos os tópicos"}</span></div>`;
+  box.style.height=H+"px";
+  box.innerHTML=`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" aria-hidden="true">`+
+    `<path class="road bg" d="${path(N-1)}" stroke-width="${sw}"/>`+(upto>0?`<path class="road on" d="${path(upto)}" stroke-width="${sw}"/>`:"")+
+    `<path class="road dash" d="${path(N-1)}" stroke-width="2.5"/></svg>${stops}${trophy}`;
+}
+$("#map").addEventListener("click",e=>{const b=e.target.closest("button.stop");if(b)start(new Set([+b.dataset.t]),"completo")});
+let rz;addEventListener("resize",()=>{clearTimeout(rz);rz=setTimeout(()=>{if(!$("#world").hidden)renderWorld()},120)});
+
+/* ---------- Rotas: #/ = início, #/mundo/<id> = trilha (o botão voltar do navegador funciona) ---------- */
+function route(){const m=location.hash.match(/^#\/mundo\/([\w-]+)/),w=m&&WORLDS.find(x=>x.id===m[1]);curWorld=w||null;show(w?"world":"start")}
+addEventListener("hashchange",()=>{stopAudio();route()});
+$("#home").onclick=()=>{location.hash="#/"};
 $("#resetAll").onclick=()=>{if(!confirm("Zerar todo o progresso? Estrelas, sequência de dias e recorde serão apagados deste navegador."))return;
   ["eej-topics","eej-streak","eej-best"].forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});
-  $("#best").hidden=true;renderMap();window.scrollTo({top:0,behavior:"smooth"})};
+  $("#best").hidden=true;renderHome();window.scrollTo({top:0,behavior:"smooth"})};
 $("#playNow").onclick=()=>start(new Set(TOPICS.map((_,i)=>i)),"rapido");
-updateCount();showBest();renderMap();
+updateCount();showBest();route();
 
 /* ---------- Quiz ---------- */
 function build(topics,m){
@@ -467,11 +617,11 @@ function build(topics,m){
   return shuffle(d).map(q=>({...q,opts:shuffle(q.o)}));
 }
 let runMode="rapido";
-function start(topics,m){runMode=m;deck=build(topics,m);idx=0;answers=[];streak=0;
+function start(topics,m){runMode=m;$("#exit").textContent=curWorld?"← Trilha":"← Início";$("#again").textContent=curWorld?"Voltar à trilha":"Voltar ao início";deck=build(topics,m);idx=0;answers=[];streak=0;
   $("#pips").innerHTML=deck.map(()=>'<span class="pip"></span>').join("");show("quiz");render()}
 $("#go").onclick=()=>start(selected,mode);
 
-function show(id){["start","quiz","result"].forEach(s=>$("#"+s).hidden=s!==id);if(id==="start")renderMap();window.scrollTo({top:0})}
+function show(id){["start","world","quiz","result"].forEach(s=>$("#"+s).hidden=s!==id);if(id==="start")renderHome();if(id==="world")renderWorld();window.scrollTo({top:0})}
 function render(){
   const q=deck[idx];locked=false;
   $("#qTopic").textContent=TOPICS[q.t];
@@ -504,7 +654,7 @@ function answer(i){
 }
 $("#next").onclick=()=>{idx++;idx<deck.length?render():finish()};
 // Sair no meio da partida: pede confirmação só se já houver resposta, para não perder progresso por engano
-function exitQuiz(){if(answers.length&&!confirm("Sair da missão? As respostas desta partida não serão salvas."))return;stopAudio();show("start")}
+function exitQuiz(){if(answers.length&&!confirm("Sair da missão? As respostas desta partida não serão salvas."))return;stopAudio();route()}
 $("#exit").onclick=exitQuiz;
 
 /* ---------- Listening (voz do navegador, en-US) ---------- */
@@ -561,7 +711,7 @@ function finish(){
   if(pct>=70)confetti();
 }
 $("#retryWeak").onclick=()=>last.weak.length&&start(new Set(last.weak),"completo");
-$("#again").onclick=()=>{stopAudio();show("start")};
+$("#again").onclick=()=>{stopAudio();route()};
 $("#share").onclick=()=>{
   const url=location.protocol.startsWith("http")?" "+location.origin+location.pathname:"";
   const txt=`Fiz o English em Jogo: ${last.pct}% (${last.hit}/${last.total}) e virei "${last.title}". Consegue me superar?${url}`;
